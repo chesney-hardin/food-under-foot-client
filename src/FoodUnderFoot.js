@@ -16,7 +16,7 @@ export const FoodUnderFoot = () => {
   }
 
   return <>
-    <NavBar token={token} staff={staff}/>
+    <NavBar token={token} setToken={setToken} staff={staff} setStaff={setStaff}/>
     <ApplicationViews token={token} setToken={setToken} staff={staff} setStaff={setStaff} />
   </>
 }
