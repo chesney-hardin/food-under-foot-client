@@ -6,6 +6,14 @@ export const getWildPlants = () => {
     }).then(res => res.json());
 };
 
+export const getCurrentEdibles = () => {
+    return fetch("http://localhost:8000/edibleparts?current", {
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("fuf_token")}`
+        }
+    }).then(res => res.json());
+};
+
 /* export const postCategories = (newCategory) => {
     return fetch("http://localhost:8000/categories", {
         method: "POST",
