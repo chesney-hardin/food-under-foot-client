@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { getEdiblePartsOfAPlant, getSinglePlant } from "../../managers/WildPlantsManager"
-import { AdminNewEdiblePart } from "./AdminNewEdiblePart"
 
-export const ManageEdibleProfile = () => {
+export const EdiblePlantProfile = () => {
     const { plantId } = useParams()
     const navigate = useNavigate()
-    const [showEdiblePartForm, setShowEdiblePartForm] = useState(false)
     const [plant, setPlant] = useState({
         id: 0,
         common_name: "",
@@ -36,19 +34,11 @@ export const ManageEdibleProfile = () => {
     return <>
         <section style={{ border: '1px solid #000', padding: '10px' }}>
             <img src={plant.image} alt="image of edible plant" style={{ maxHeight: '300px' }} />
-            <button className="btn btn-1 btn-sep icon-send"
-                onClick={() => { navigate(``) }}
-            >Edit</button>
-            <button className="btn btn-1 btn-sep icon-send"
-                onClick={() => { /* insert delete fetch call */ }}
-            >Delete</button>
             <div>{plant.common_name.toUpperCase()} ({plant.latin_name})</div>
             <div>Latin family: {plant.latin_family}</div>
             <div>Other common names: {plant.alternate_names}</div>
             <div>Description: {plant.description}</div>
             <Link className="nav-link" to={plant.link_to_usda} target="_blank" rel="noopener noreferrer">More Plant Information</Link>
-        </section>
-        <section>
             <div>Edible Parts: {edibleParts.map((part) =>
                 <article>
                     <div>{part.plant_part.label}</div>
@@ -56,11 +46,8 @@ export const ManageEdibleProfile = () => {
                     <img src={part.usability.icon} style={{ maxHeight: '50px' }} />
                 </article>
             )}</div>
-            {showEdiblePartForm ?
-                <AdminNewEdiblePart plant={plant} setShowEdiblePartForm={setShowEdiblePartForm} setEdibleParts= {setEdibleParts}/>
-                : <button className="btn btn-1 btn-sep icon-send"
-                    onClick={() => { setShowEdiblePartForm(true) }}
-                >Add An Edible Part</button>}
         </section>
     </>
 }
+
+
