@@ -21,7 +21,7 @@ export const AdminNav = ({ token, setToken }) => {
         >
             <div className="navbar-brand">
                 <a className="navbar-item" href="/">
-                    <img src={Logo} height="3rem" alt="Rare Logo" />{" "}
+                    <img src={Logo} height="150rem" alt="Rare Logo" />{" "}
                     <h1 className="title is-4">Food Under Foot</h1>
                 </a>
 
@@ -49,7 +49,7 @@ export const AdminNav = ({ token, setToken }) => {
                                 <Link className="nav-link" to="/home">Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/login">Manage Wild Edibles</Link>
+                                <Link className="nav-link" to="/manage-edibles">Manage Wild Edibles</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/register">Profile</Link>

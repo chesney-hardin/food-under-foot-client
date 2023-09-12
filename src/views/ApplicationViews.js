@@ -2,7 +2,7 @@ import { AdminViews } from "./AdminViews"
 import { UserViews } from "./UserViews"
 
 export const ApplicationViews = ({ token, setToken, staff, setStaff }) => {
-    if (staff) {
+    if (JSON.parse(staff)) {
         return (
             <AdminViews
                 token={token}
@@ -10,7 +10,7 @@ export const ApplicationViews = ({ token, setToken, staff, setStaff }) => {
                 staff={staff}
                 setStaff={setStaff}
             />
-        );
+        )
     } else {
         return (
             <UserViews
@@ -19,6 +19,6 @@ export const ApplicationViews = ({ token, setToken, staff, setStaff }) => {
                 staff={staff}
                 setStaff={setStaff}
             />
-        );
+        )
     }
 }
