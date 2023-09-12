@@ -18,7 +18,6 @@ export const AdminViews = ({ token, setToken, staff, setStaff }) => {
                 <Route path="/manage-edibles" element={<ManageWildPlants token={token} />} />
                 <Route path="/manage-edible-profile/:plantId" element={<ManageEdibleProfile token={token} />} />
                 <Route path="/new-plant-form" element={<AdminNewPlantForm token={token} />} />
-                <Route path="/new-edible-part-form/:plantId" element={<AdminNewEdiblePart token={token} />} />
             </Route>
         </Routes>
     </>
