@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
-import { getEdiblePartsOfAPlant, getSinglePlant } from "../../managers/WildPlantsManager"
+import { deleteWildPlant, getSinglePlant } from "../../managers/WildPlantsManager"
+import { deleteEdiblePart, getEdiblePartsOfAPlant } from "../../managers/EdiblePartsManager"
 import { AdminNewEdiblePart } from "./AdminNewEdiblePart"
 
 export const ManageEdibleProfile = () => {
@@ -33,6 +34,25 @@ export const ManageEdibleProfile = () => {
         return monthName
     }
 
+    const deletePlantProfile = (event) => {
+        event.preventDefault()
+
+        const userConfirmed = window.confirm("Are you sure you want to PERMANENTLY DELETE this plant profile from the database? This cannot be undone.");
+        if (userConfirmed) {
+            deleteWildPlant(plantId)
+                .then(() => {
+                    navigate(`/manage-edibles`)
+                })
+        }
+    }
+    const deletePart = (partId) => {
+
+        deleteEdiblePart(partId)
+            .then(() => {
+                getEdiblePartsOfAPlant(plantId).then((plantData) => setEdibleParts(plantData))
+            })
+    }
+
     return <>
         <section style={{ border: '1px solid #000', padding: '10px' }}>
             <img src={plant.image} alt="image of edible plant" style={{ maxHeight: '300px' }} />
@@ -40,7 +60,7 @@ export const ManageEdibleProfile = () => {
                 onClick={() => { navigate(``) }}
             >Edit</button>
             <button className="btn btn-1 btn-sep icon-send"
-                onClick={() => { /* insert delete fetch call */ }}
+                onClick={deletePlantProfile}
             >Delete</button>
             <div>{plant.common_name.toUpperCase()} ({plant.latin_name})</div>
             <div>Latin family: {plant.latin_family}</div>
@@ -54,10 +74,16 @@ export const ManageEdibleProfile = () => {
                     <div>{part.plant_part.label}</div>
                     <div>{convertHarvestMonth(part.harvest_start)} - {convertHarvestMonth(part.harvest_end)}</div>
                     <img src={part.usability.icon} style={{ maxHeight: '50px' }} />
+                    <button className="btn btn-1 btn-sep icon-send"
+                        onClick={() => { navigate(``) }}
+                    >Edit</button>
+                    <button className="btn btn-1 btn-sep icon-send"
+                        onClick={() => { deletePart(part.id) }}
+                    >Delete</button>
                 </article>
             )}</div>
             {showEdiblePartForm ?
-                <AdminNewEdiblePart plant={plant} setShowEdiblePartForm={setShowEdiblePartForm} setEdibleParts= {setEdibleParts}/>
+                <AdminNewEdiblePart plant={plant} setShowEdiblePartForm={setShowEdiblePartForm} setEdibleParts={setEdibleParts} />
                 : <button className="btn btn-1 btn-sep icon-send"
                     onClick={() => { setShowEdiblePartForm(true) }}
                 >Add An Edible Part</button>}

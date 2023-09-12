@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getCurrentEdibles, getWildPlants } from "../../managers/WildPlantsManager"
+import { getCurrentEdibles } from "../../managers/EdiblePartsManager"
 import { useNavigate } from "react-router-dom"
 
 export const CurrentEdiblesList = () => {

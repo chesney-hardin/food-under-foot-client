@@ -6,12 +6,11 @@ import { Authorized } from "./Authorized"
 import { ManageWildPlants } from "../components/WildEdibles/ManageWildPlants"
 import { ManageEdibleProfile } from "../components/WildEdibles/ManageEdibleProfile"
 import { AdminNewPlantForm } from "../components/WildEdibles/AdminNewPlantForm"
-import { AdminNewEdiblePart } from "../components/WildEdibles/AdminNewEdiblePart"
 
 export const AdminViews = ({ token, setToken, staff, setStaff }) => {
     return <>
         <Routes>
-            <Route path="/login" element={<Login setToken={setToken} setStaff={setStaff} />} />
+            <Route path="/login" element={<Login setToken={setToken} setStaff={setStaff} staff={staff}/>} />
             <Route path="/register" element={<Register setToken={setToken} setStaff={setStaff}/>} />
             <Route element={<Authorized token={token} staff={staff} />}>
                 <Route path="/home" element={<AdminHome token={token} />} />

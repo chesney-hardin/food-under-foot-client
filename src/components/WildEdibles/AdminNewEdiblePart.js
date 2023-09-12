@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { getUsabilityTypes } from "../../managers/UsabilityTypesManager"
-import { getEdiblePartsOfAPlant, getSinglePlant } from "../../managers/WildPlantsManager"
+import { getEdiblePartsOfAPlant } from "../../managers/EdiblePartsManager"
 import { getPlantParts, postNewEdiblePart } from "../../managers/PlantPartsManager"
 
 export const AdminNewEdiblePart = ({ plant, setShowEdiblePartForm, setEdibleParts }) => {

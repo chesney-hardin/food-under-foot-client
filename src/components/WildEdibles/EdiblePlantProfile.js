@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
-import { getEdiblePartsOfAPlant, getSinglePlant } from "../../managers/WildPlantsManager"
+import { getSinglePlant } from "../../managers/WildPlantsManager"
+import { getEdiblePartsOfAPlant } from "../../managers/EdiblePartsManager"
 
 export const EdiblePlantProfile = () => {
     const { plantId } = useParams()

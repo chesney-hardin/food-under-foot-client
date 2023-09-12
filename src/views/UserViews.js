@@ -10,7 +10,7 @@ import { WildEdiblesList } from "../components/WildEdibles/WildEdiblesList"
 export const UserViews = ({ token, setToken, staff, setStaff }) => {
     return <>
         <Routes>
-            <Route path="/login" element={<Login setToken={setToken} setStaff={setStaff} />} />
+            <Route path="/login" element={<Login setToken={setToken} setStaff={setStaff} staff={staff}/>} />
             <Route path="/register" element={<Register setToken={setToken} setStaff={setStaff}/>} />
             <Route element={<Authorized token={token} staff={staff} />}>
                 <Route path="/home" element={<UserHome token={token} />} />
