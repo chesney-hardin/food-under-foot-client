@@ -18,3 +18,38 @@ export const postNewHarvestLog = (newHarvestLog) => {
     }).then(res => res.json())
 }
 
+export const getCurrentUsersHarvestLogs = () => {
+    return fetch(`http://localhost:8000/harvestlogs?user`, {
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("fuf_token")}`
+        }
+    }).then(res => res.json())
+}
+
+export const deleteHarvestLog = (logId) => {
+    return fetch(`http://localhost:8000/harvestlogs/${logId}`, {
+        method: "DELETE",
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("fuf_token")}`
+        }
+    })
+  }
+
+  export const getHarvestLogById = (logId) => {
+    return fetch(`http://localhost:8000/harvestlogs/${logId}`, {
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("fuf_token")}`
+        }
+    }).then(res => res.json())
+}
+
+export const updateHarvestLog = (logId, log) => {
+    return fetch(`http://localhost:8000/harvestlogs/${logId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Token ${localStorage.getItem("fuf_token")}`
+        },
+        body: JSON.stringify(log)
+    })
+}

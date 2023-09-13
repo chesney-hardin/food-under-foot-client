@@ -12,7 +12,9 @@ export const WildEdiblesList = () => {
 
     return <article>
         {edibles.map((plant) => (
-            <section style={{ border: '1px solid #000', padding: '10px' }}
+            <section 
+            key={`plant--${plant.id}`}
+            style={{ border: '1px solid #000', padding: '10px' }}
             onClick={() => { navigate(`/edible-profile/${plant?.id}`) }}>
                 <img src={plant?.image} alt="image of edible plant" style={{ maxHeight: '300px' }} />
                 <div>{plant?.common_name.toUpperCase()}</div>

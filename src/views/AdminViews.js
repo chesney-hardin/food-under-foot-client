@@ -8,6 +8,8 @@ import { ManageEdibleProfile } from "../components/WildEdibles/ManageEdibleProfi
 import { AdminNewPlantForm } from "../components/WildEdibles/AdminNewPlantForm"
 import { EditEdibleProfileForm } from "../components/WildEdibles/EditEdibleProfileForm"
 import { EditEdiblePart } from "../components/WildEdibles/EditEdiblePart"
+import { PublicHarvestLogs } from "../components/HarvestLogs/PublicHarvestLogs"
+import { HarvestGuidelines } from "../components/HarvestGuidelines/HarvestGuidelines"
 
 export const AdminViews = ({ token, setToken, staff, setStaff }) => {
     return <>
@@ -16,11 +18,13 @@ export const AdminViews = ({ token, setToken, staff, setStaff }) => {
             <Route path="/register" element={<Register setToken={setToken} setStaff={setStaff}/>} />
             <Route element={<Authorized token={token} staff={staff} />}>
                 <Route path="/home" element={<AdminHome token={token} />} />
+                <Route path="/harvest-guidelines" element={<HarvestGuidelines />} />
                 <Route path="/manage-edibles" element={<ManageWildPlants token={token} />} />
                 <Route path="/manage-edible-profile/:plantId" element={<ManageEdibleProfile token={token} />} />
                 <Route path="/new-plant-form" element={<AdminNewPlantForm token={token} />} />
                 <Route path="/edit-edible-profile/:plantId" element={<EditEdibleProfileForm />} />
                 <Route path="/edit-edible-part/:partId" element={<EditEdiblePart />} />
+                <Route path="/harvest-logs/:plantId" element={<PublicHarvestLogs />} />
             </Route>
         </Routes>
     </>

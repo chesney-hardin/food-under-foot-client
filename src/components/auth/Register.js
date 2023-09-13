@@ -6,7 +6,7 @@ export const Register = () => {
     const firstName = useRef()
     const lastName = useRef()
     const email = useRef()
-    const isStaff = useRef()
+    const accountType = useRef()
     const password = useRef()
     const verifyPassword = useRef()
     const passwordDialog = useRef()
@@ -20,7 +20,7 @@ export const Register = () => {
                 "email": email.current.value,
                 "first_name": firstName.current.value,
                 "last_name": lastName.current.value,
-                "is_staff": JSON.parse(isStaff.current.value),
+                "account_type": accountType.current.value,
                 "password": password.current.value
             }
 
@@ -68,9 +68,9 @@ export const Register = () => {
                 </fieldset>
                 <fieldset>
                     <label htmlFor="admin"> Account Type</label>
-                    <select ref={isStaff} name="isStaff" className="form-control">
-                        <option value="true">Admin</option>
-                        <option value="false">User</option>
+                    <select ref={accountType} name="accountType" className="form-control">
+                        <option value="admin">Admin</option>
+                        <option value="user">User</option>
                     </select>
                 </fieldset>
                 <fieldset style={{

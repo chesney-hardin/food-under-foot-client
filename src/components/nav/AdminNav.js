@@ -20,24 +20,8 @@ export const AdminNav = ({ token, setToken }) => {
             aria-label="main navigation"
         >
             <div className="navbar-brand">
-                <a className="navbar-item" href="/">
+                <a className="navbar-item" href="/home">
                     <img src={Logo} height="150rem" alt="Rare Logo" />{" "}
-                    <h1 className="title is-4">Food Under Foot</h1>
-                </a>
-
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <a
-                    role="button"
-                    className="navbar-burger"
-                    aria-label="menu"
-                    aria-expanded="false"
-                    data-target="navbarBasicExample"
-                    onClick={showMobileNavbar}
-                    ref={hamburger}
-                >
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
                 </a>
             </div>
 
@@ -52,7 +36,7 @@ export const AdminNav = ({ token, setToken }) => {
                                 <Link className="nav-link" to="/manage-edibles">Manage Wild Edibles</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/register">Profile</Link>
+                                    <Link className="nav-link" to="/harvest-guidelines">Harvest Guidelines</Link>
                             </li>
                         </>
                     ) : (

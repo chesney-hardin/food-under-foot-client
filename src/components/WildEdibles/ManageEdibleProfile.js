@@ -3,7 +3,6 @@ import { Link, useNavigate, useParams } from "react-router-dom"
 import { deleteWildPlant, getSinglePlant } from "../../managers/WildPlantsManager"
 import { deleteEdiblePart, getEdiblePartsOfAPlant } from "../../managers/EdiblePartsManager"
 import { AdminNewEdiblePart } from "./AdminNewEdiblePart"
-import { EditEdiblePart } from "./EditEdiblePart"
 
 export const ManageEdibleProfile = () => {
     const { plantId } = useParams()
@@ -58,11 +57,14 @@ export const ManageEdibleProfile = () => {
         <section style={{ border: '1px solid #000', padding: '10px' }}>
             <img src={plant.image} alt="image of edible plant" style={{ maxHeight: '300px' }} />
             <button className="btn btn-1 btn-sep icon-send"
+                onClick={() => {navigate(`/harvest-logs/${plantId}`)}}
+            >Public Harvest Logs</button>
+            <button className="btn btn-1 btn-sep icon-send"
                 onClick={() => { navigate(`/edit-edible-profile/${plantId}`) }}
-            >Edit</button>
+            >Edit Plant Profile</button>
             <button className="btn btn-1 btn-sep icon-send"
                 onClick={deletePlantProfile}
-            >Delete</button>
+            >Delete Plant Profile</button>
             <div>{plant.common_name.toUpperCase()} ({plant.latin_name})</div>
             <div>Latin family: {plant.latin_family}</div>
             <div>Other common names: {plant.alternate_names}</div>
@@ -79,10 +81,10 @@ export const ManageEdibleProfile = () => {
                     <img src={part.usability.icon} style={{ maxHeight: '50px' }} />
                     <button className="btn btn-1 btn-sep icon-send"
                         onClick={() => { navigate(`/edit-edible-part/${part.id}`) }}
-                    >Edit</button>
+                    >Edit Edible Part</button>
                         <button className="btn btn-1 btn-sep icon-send"
                             onClick={() => { deletePart(part.id) }}
-                        >Delete</button> 
+                        >Delete Edible Part</button> 
                 </article>
             )}</div>
             {showEdiblePartForm ?

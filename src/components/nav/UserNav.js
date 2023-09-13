@@ -14,18 +14,12 @@ export const UserNav = ({ token, setToken, isAdmin }) => {
 
     return (
         <nav className="navbar is-success mb-3" role="navigation" aria-label="main navigation">
-            <div className="navbar-brand">
-                <a className="navbar-item" href="/">
-                    <img src={Logo} height="150rem" alt="Fuf Logo" /> <h1 className="title is-4">Food Under Foot</h1>
-                </a>
 
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" onClick={showMobileNavbar} ref={hamburger}>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </a>
-            </div>
+            <a className="navbar-item" href="/home">
+                <img src={Logo} height="150rem" alt="Fuf Logo" />
+            </a>
+
+
 
             <div className="navbar-menu" ref={navbar}>
                 <div className="navbar-start">
@@ -37,13 +31,13 @@ export const UserNav = ({ token, setToken, isAdmin }) => {
                                     <Link className="nav-link" to="/home">Home</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/">Harvest Guidelines</Link>
+                                    <Link className="nav-link" to="/harvest-guidelines">Harvest Guidelines</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/">Your Harvest Logs</Link>
+                                    <Link className="nav-link" to="/user-harvest-logs">Your Harvest Logs</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/">Profile</Link>
+                                    <Link className="nav-link" to="/edibles">Wild Edibles</Link>
                                 </li>
 
 
