@@ -35,8 +35,8 @@ export const EdiblePlantProfile = () => {
     return <>
         <section style={{ border: '1px solid #000', padding: '10px' }}>
             <button className="btn btn-1 btn-sep icon-send"
-                onClick={() => { navigate(``) }}
-            >Log A Harvest</button>
+                onClick={() => { navigate(`/harvest-log-form`) }}
+            >Log a Harvest</button>
             <button className="btn btn-1 btn-sep icon-send"
                 onClick={() => {navigate(`/public-harvest-logs/${plantId}`)}}
             >Public Harvest Logs</button>

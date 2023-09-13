@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { getPublicHarvestLogsByPlantId } from "../../managers/HarvestLogsManager"
 
-export const PublicHarvestLogs = () => {
+export const UserHarvestLogs = () => {
     const { plantId } = useParams()
     const navigate = useNavigate()
     const [harvestLogs, setHarvestLogs] = useState([])

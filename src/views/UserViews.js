@@ -6,6 +6,8 @@ import { Authorized } from "./Authorized"
 import { EdiblePlantProfile } from "../components/WildEdibles/EdiblePlantProfile"
 import { WildEdiblesList } from "../components/WildEdibles/WildEdiblesList"
 import { PublicHarvestLogs } from "../components/HarvestLogs/PublicHarvestLogs"
+import { HarvestLogForm } from "../components/HarvestLogs/HarvestLogForm"
+import { UserHarvestLogs } from "../components/HarvestLogs/UserHarvestLogs"
 
 
 export const UserViews = ({ token, setToken, staff, setStaff }) => {
@@ -14,10 +16,12 @@ export const UserViews = ({ token, setToken, staff, setStaff }) => {
             <Route path="/login" element={<Login setToken={setToken} setStaff={setStaff} staff={staff}/>} />
             <Route path="/register" element={<Register setToken={setToken} setStaff={setStaff}/>} />
             <Route element={<Authorized token={token} staff={staff} />}>
-                <Route path="/home" element={<UserHome token={token} />} />
-                <Route path="/edibles" element={<WildEdiblesList token={token} />} />
-                <Route path="/edible-profile/:plantId" element={<EdiblePlantProfile token={token} />} />
+                <Route path="/home" element={<UserHome />} />
+                <Route path="/edibles" element={<WildEdiblesList />} />
+                <Route path="/edible-profile/:plantId" element={<EdiblePlantProfile />} />
                 <Route path="/public-harvest-logs/:plantId" element={<PublicHarvestLogs />} />
+                <Route path="/harvest-log-form" element={<HarvestLogForm token={token} />} />
+                <Route path="/user-harvest-logs" element={<UserHarvestLogs token={token} />} />
             </Route>
         </Routes>
     </>

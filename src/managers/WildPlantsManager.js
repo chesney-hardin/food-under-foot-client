@@ -14,8 +14,6 @@ export const getSinglePlant = (plantId) => {
     }).then(res => res.json());
 }
 
-
-
 export const postNewPlant = (newPlant) => {
     return fetch("http://localhost:8000/wildplants", {
         method: "POST",

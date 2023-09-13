@@ -5,3 +5,16 @@ export const getPublicHarvestLogsByPlantId = (plantId) => {
         }
     }).then(res => res.json())
 }
+
+export const postNewHarvestLog = (newHarvestLog) => {
+    return fetch("http://localhost:8000/harvestlogs", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "Authorization": `Token ${localStorage.getItem("fuf_token")}`
+        },
+        body: JSON.stringify(newHarvestLog)
+    }).then(res => res.json())
+}
+

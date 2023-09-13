@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import { getSinglePlant, postNewPlant, updatePlant } from "../../managers/WildPlantsManager"
+import { getSinglePlant, updatePlant } from "../../managers/WildPlantsManager"
 
 export const EditEdibleProfileForm = () => {
     const { plantId } = useParams()
