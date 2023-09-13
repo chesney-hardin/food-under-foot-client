@@ -34,14 +34,22 @@ export const EdiblePlantProfile = () => {
 
     return <>
         <section style={{ border: '1px solid #000', padding: '10px' }}>
+            <button className="btn btn-1 btn-sep icon-send"
+                onClick={() => { navigate(``) }}
+            >Log A Harvest</button>
+            <button className="btn btn-1 btn-sep icon-send"
+                onClick={() => {navigate(`/public-harvest-logs/${plantId}`)}}
+            >Public Harvest Logs</button>
             <img src={plant.image} alt="image of edible plant" style={{ maxHeight: '300px' }} />
             <div>{plant.common_name.toUpperCase()} ({plant.latin_name})</div>
             <div>Latin family: {plant.latin_family}</div>
             <div>Other common names: {plant.alternate_names}</div>
             <div>Description: {plant.description}</div>
             <Link className="nav-link" to={plant.link_to_usda} target="_blank" rel="noopener noreferrer">More Plant Information</Link>
+            <div>====================================================================</div>
             <div>Edible Parts: {edibleParts.map((part) =>
-                <article>
+                <article key={`part--${part.id}`}>
+                    <img src={part.image} alt="image of edible part" style={{ maxHeight: '100px' }} />
                     <div>{part.plant_part.label}</div>
                     <div>{convertHarvestMonth(part.harvest_start)} - {convertHarvestMonth(part.harvest_end)}</div>
                     <img src={part.usability.icon} style={{ maxHeight: '50px' }} />

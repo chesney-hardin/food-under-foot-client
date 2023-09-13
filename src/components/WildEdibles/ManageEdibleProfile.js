@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom"
 import { deleteWildPlant, getSinglePlant } from "../../managers/WildPlantsManager"
 import { deleteEdiblePart, getEdiblePartsOfAPlant } from "../../managers/EdiblePartsManager"
 import { AdminNewEdiblePart } from "./AdminNewEdiblePart"
+import { EditEdiblePart } from "./EditEdiblePart"
 
 export const ManageEdibleProfile = () => {
     const { plantId } = useParams()
@@ -57,7 +58,7 @@ export const ManageEdibleProfile = () => {
         <section style={{ border: '1px solid #000', padding: '10px' }}>
             <img src={plant.image} alt="image of edible plant" style={{ maxHeight: '300px' }} />
             <button className="btn btn-1 btn-sep icon-send"
-                onClick={() => { navigate(``) }}
+                onClick={() => { navigate(`/edit-edible-profile/${plantId}`) }}
             >Edit</button>
             <button className="btn btn-1 btn-sep icon-send"
                 onClick={deletePlantProfile}
@@ -66,20 +67,22 @@ export const ManageEdibleProfile = () => {
             <div>Latin family: {plant.latin_family}</div>
             <div>Other common names: {plant.alternate_names}</div>
             <div>Description: {plant.description}</div>
-            <Link className="nav-link" to={plant.link_to_usda} target="_blank" rel="noopener noreferrer">More Plant Information</Link>
+            <Link className="nav-link" to={plant.link_to_usda} target="_blank" rel="noopener noreferrer">USDA Plant Profile for More Information</Link>
         </section>
+        <div>==============================================================</div>
         <section>
             <div>Edible Parts: {edibleParts.map((part) =>
-                <article>
+                <article style={{ border: '1px solid #000', padding: '10px' }}>
+                    <img src={part.image} alt="image of edible part" style={{ maxHeight: '100px' }} />
                     <div>{part.plant_part.label}</div>
-                    <div>{convertHarvestMonth(part.harvest_start)} - {convertHarvestMonth(part.harvest_end)}</div>
+                    <div>Harvest Season: {convertHarvestMonth(part.harvest_start)} - {convertHarvestMonth(part.harvest_end)}</div>
                     <img src={part.usability.icon} style={{ maxHeight: '50px' }} />
                     <button className="btn btn-1 btn-sep icon-send"
-                        onClick={() => { navigate(``) }}
+                        onClick={() => { navigate(`/edit-edible-part/${part.id}`) }}
                     >Edit</button>
-                    <button className="btn btn-1 btn-sep icon-send"
-                        onClick={() => { deletePart(part.id) }}
-                    >Delete</button>
+                        <button className="btn btn-1 btn-sep icon-send"
+                            onClick={() => { deletePart(part.id) }}
+                        >Delete</button> 
                 </article>
             )}</div>
             {showEdiblePartForm ?

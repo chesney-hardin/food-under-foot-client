@@ -14,10 +14,10 @@ export const ManageWildPlants = () => {
 
         const userConfirmed = window.confirm("Are you sure you want to PERMANENTLY DELETE this plant profile from the database? This cannot be undone.");
         if (userConfirmed) {
-        deleteWildPlant(plantId)
-            .then(() => {
-                getWildPlants().then((plantData) => setEdibles(plantData))
-            })
+            deleteWildPlant(plantId)
+                .then(() => {
+                    getWildPlants().then((plantData) => setEdibles(plantData))
+                })
         }
     }
 
@@ -26,7 +26,9 @@ export const ManageWildPlants = () => {
             onClick={() => { navigate(`/new-plant-form`) }}
         >Add a New Wild Plant</button>
         {edibles.map((plant) => (
-            <section style={{ border: '1px solid #000', padding: '10px' }}>
+            <section
+                key={`plant--${plant.id}`}
+                style={{ border: '1px solid #000', padding: '10px' }}>
                 <article
                     onClick={() => { navigate(`/manage-edible-profile/${plant?.id}`) }}>
                     <img src={plant?.image} alt="image of edible plant" style={{ maxHeight: '300px' }} />
@@ -34,7 +36,7 @@ export const ManageWildPlants = () => {
                     <div> {plant?.plant_part?.label} </div>
                 </article>
                 <button className="btn btn-1 btn-sep icon-send"
-                    onClick={() => { navigate(``) }}
+                    onClick={() => { navigate(`/edit-edible-profile/${plant.id}`) }}
                 >Edit</button>
                 <button className="btn btn-1 btn-sep icon-send"
                     onClick={() => { deletePlantProfile(plant.id) }}

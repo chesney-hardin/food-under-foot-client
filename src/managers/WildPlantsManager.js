@@ -36,3 +36,14 @@ export const deleteWildPlant = (plantId) => {
         }
     })
   }
+
+export const updatePlant = (plantId, plant) => {
+    return fetch(`http://localhost:8000/wildplants/${plantId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Token ${localStorage.getItem("fuf_token")}`
+        },
+        body: JSON.stringify(plant)
+    })
+}

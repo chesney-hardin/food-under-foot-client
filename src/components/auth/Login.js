@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { loginUser } from "../../managers/AuthManager"
 
 
-export const Login = ({ setToken, setStaff, staff }) => {
+export const Login = ({ setToken, setStaff }) => {
     const email = useRef()
     const password = useRef()
     const [isUnsuccessful, setIsUnsuccessful] = useState(false)
@@ -22,20 +22,15 @@ export const Login = ({ setToken, setStaff, staff }) => {
                     setToken(res.token)
                     setStaff(res.staff)
                     navigate("/home")
+                    setTimeout(() => {
+                        if (res.staff) {
+                            window.alert("Hello admin user");
+                        } else {
+                            window.alert("NEW USERS!!!\nIf you're new to foraging wild edibles, please take a moment to review the harvest guidelines and safety tips.");
+                        }
+                    }, 100)
                 } else {
                     setIsUnsuccessful(true)
-                }
-            })
-            .then(() => {
-                if (staff) {
-                    setTimeout(() => {
-                        window.alert(`Hello admin user`)
-                    }, 100)
-                } else {
-                    setTimeout(() => {
-                        window.alert(`NEW USERS!!! 
-                        If you're new to foraging wild edibles, please take a moment to review the harvest guidelines and safety tips.`)
-                    }, 100)
                 }
             })
     }

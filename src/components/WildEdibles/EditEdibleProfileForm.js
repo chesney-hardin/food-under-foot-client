@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import { postNewPlant } from "../../managers/WildPlantsManager"
+import { Link, useNavigate, useParams } from "react-router-dom"
+import { getSinglePlant, postNewPlant, updatePlant } from "../../managers/WildPlantsManager"
 
-export const AdminNewPlantForm = () => {
-    const [newPlant, setNewPlant] = useState({
+export const EditEdibleProfileForm = () => {
+    const { plantId } = useParams()
+    const [plant, setPlant] = useState({
         common_name: "",
         latin_name: "",
         alternate_names: "",
@@ -15,32 +16,42 @@ export const AdminNewPlantForm = () => {
 
     const navigate = useNavigate()
 
+    useEffect(() => {
+        if(plantId) {
+            getSinglePlant(plantId)
+            .then((plantData) => setPlant(plantData))
+        }
+    }, [plantId])
 
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
 
-        postNewPlant(newPlant)
-            .then(plantCreated => {
-                const newPlantId = plantCreated.id
-                navigate(`/manage-edible-profile/${newPlantId}`)
-            })
-    }
+        const plantToSend = {
+            id: plant.id,
+            common_name: plant.common_name,
+            latin_name: plant.latin_name,
+            alternate_names: plant.alternate_names,
+            latin_family: plant.latin_family,
+            description: plant.description,
+            image: plant.image,
+            link_to_usda: plant.link_to_usda,
+            created_by: plant.created_by
+        }
 
-    const handleChange = (event) => {
-        const copy = {...newPlant}
+        updatePlant(plantId, plantToSend)
+            .then(() => {
+                navigate(`/manage-edible-profile/${plantId}`)
+            }) 
+    }
+    const handleEdit = (event) => {
+        const copy = {...plant}
         copy[event.target.name] = event.target.value
-        setNewPlant(copy)
+        setPlant(copy)
     }
 
     return (<section className="">
-        <ol style={{ border: '1px solid #000', padding: '10px' }}>
-            <li>Add plant profile information.</li>
-            <li>Use {<Link to="https://plants.usda.gov/home" target="_blank" rel="noopener noreferrer">USDA plants database</Link>} to cross reference plant information before sending to database.</li>
-            <li>Create profile.</li>
-            <li>Add edible parts of the plant with their corresponding harvest season information.</li>
-        </ol>
         <section className="">
-            <h1>Create a New Plant Profile:</h1>
+            <h1>Edit Plant Profile for {plant.common_name}:</h1>
             <form>
                 <fieldset>
                     <div className="">
@@ -49,13 +60,13 @@ export const AdminNewPlantForm = () => {
                             required autoFocus
                             type="text"
                             style={{
-                                height: "2rem"
+                                height: "2rem",
+                                width: "15rem"
                             }}
                             className="form-control"
-                            placeholder="Dandelion..."
                             name="common_name"
-                            value={newPlant.common_name}
-                            onChange={ handleChange } />
+                            value={plant.common_name}
+                            onChange={handleEdit} />
                     </div>
                 </fieldset>
                 <fieldset>
@@ -65,13 +76,13 @@ export const AdminNewPlantForm = () => {
                             required
                             type="text"
                             style={{
-                                height: "2rem"
+                                height: "2rem",
+                                width: "15rem"
                             }}
                             className="form-control"
-                            placeholder="Taraxacum officinale..."
                             name="latin_name"
-                            value={newPlant.latin_name}
-                            onChange={ handleChange }  />
+                            value={plant.latin_name}
+                            onChange={handleEdit} />
                     </div>
                 </fieldset>
                 <fieldset>
@@ -81,13 +92,13 @@ export const AdminNewPlantForm = () => {
                             required
                             type="text"
                             style={{
-                                height: "2rem"
+                                height: "2rem",
+                                width: "15rem"
                             }}
                             className="form-control"
-                            placeholder="lion's tooth, wild endive..."
                             name="alternate_names"
-                            value={newPlant.alternate_names}
-                            onChange={ handleChange }  />
+                            value={plant.alternate_names}
+                            onChange={handleEdit} />
                     </div>
                 </fieldset>
                 <fieldset>
@@ -97,13 +108,13 @@ export const AdminNewPlantForm = () => {
                             required
                             type="text"
                             style={{
-                                height: "2rem"
+                                height: "2rem",
+                                width: "15rem"
                             }}
                             className="form-control"
-                            placeholder="Asteraceae - Aster family..."
                             name="latin_family"
-                            value={newPlant.latin_family}
-                            onChange={ handleChange }  />
+                            value={plant.latin_family}
+                            onChange={handleEdit}/>
                     </div>
                 </fieldset>
                 <fieldset>
@@ -112,12 +123,13 @@ export const AdminNewPlantForm = () => {
                         <textarea
                             required
                             style={{
-                                height: "5rem"
+                                height: "5rem",
+                                width: "25rem"
                             }}
                             className="form-control"
                             name="description"
-                            value={newPlant.description}
-                            onChange={ handleChange }  >
+                            value={plant.description}
+                            onChange={handleEdit} >
                             Growing conditions, companion plants, botanical description, etc....
                         </textarea>
                     </div>
@@ -130,13 +142,13 @@ export const AdminNewPlantForm = () => {
                             required
                             type="text"
                             style={{
-                                height: "2rem"
+                                height: "2rem",
+                                width: "15rem"
                             }}
                             className="form-control"
-                            placeholder="Link to an image of the plant..."
                             name="image"
-                            value={newPlant.image}
-                            onChange={ handleChange } />
+                            value={plant.image}
+                            onChange={handleEdit} />
                     </div>
                 </fieldset>
                 <fieldset>
@@ -146,13 +158,13 @@ export const AdminNewPlantForm = () => {
                             required
                             type="text"
                             style={{
-                                height: "2rem"
+                                height: "2rem",
+                                width: "15rem"
                             }}
                             className="form-control"
-                            placeholder="USDA plant profile link..."
                             name="link_to_usda"
-                            value={newPlant.link_to_usda}
-                            onChange={ handleChange } />
+                            value={plant.link_to_usda}
+                            onChange={handleEdit}/>
                     </div>
                 </fieldset>
 
@@ -162,7 +174,7 @@ export const AdminNewPlantForm = () => {
                     <button
                         onClick={handleSaveButtonClick}
                         className="btn"
-                    >Create Plant Profile</button>
+                    >Save Plant Profile</button>
                 </div>
             </form>
         </section>
