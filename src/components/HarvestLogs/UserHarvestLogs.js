@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { deleteHarvestLog, getCurrentUsersHarvestLogs } from "../../managers/HarvestLogsManager"
+import { MapView } from "./MapView"
 
 export const UserHarvestLogs = () => {
     const navigate = useNavigate()
@@ -23,6 +24,10 @@ export const UserHarvestLogs = () => {
     }
 
     return <>
+        <div>
+            <h1>Your Harvest Logs</h1>
+            <MapView harvestLogs={harvestLogs} />
+        </div>
         <button className="btn btn-1 btn-sep icon-send"
             onClick={() => { navigate(`/harvest-log-form`) }}
         >Log a Harvest</button>

@@ -10,8 +10,8 @@ export const HarvestLogForm = () => {
     const [newHarvestLog, setNewHarvestLog] = useState({
         wild_plant: 0,
         plant_part: 0,
-        latitude: 0,
-        longitude: 0,
+        latitude: undefined,
+        longitude: undefined,
         date: "",
         isPublicLocation: 0,
         quantity: "",

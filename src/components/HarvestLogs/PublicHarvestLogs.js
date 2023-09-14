@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { getPublicHarvestLogsByPlantId } from "../../managers/HarvestLogsManager"
+import { MapView } from "./MapView"
 
 export const PublicHarvestLogs = () => {
     const { plantId } = useParams()
@@ -16,6 +17,10 @@ export const PublicHarvestLogs = () => {
 
 
     return <>
+        <div>
+            <h2>Public Harvest Logs</h2>
+            <MapView harvestLogs={harvestLogs} />
+        </div>
         <button className="btn btn-1 btn-sep icon-send"
             onClick={() => { navigate(`/edible-profile/${plantId}`) }}
         >Back to Plant Profile</button>
