@@ -13,12 +13,12 @@ export const HarvestLogForm = () => {
         latitude: 0,
         longitude: 0,
         date: "",
-        isPublicLocation: false,
+        isPublicLocation: 0,
         quantity: "",
         title: "",
         description: "",
         image: "",
-        isPublic: false
+        isPublic: 0
     })
 
     const navigate = useNavigate()

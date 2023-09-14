@@ -48,7 +48,7 @@ export const EditEdiblePart = () => {
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
 
-        const partToSend = {
+        /* const partToSend = {
             id: ediblePart.id,
             wild_plant: ediblePart.wild_plant,
             plant_part: ediblePart.plant_part,
@@ -56,9 +56,9 @@ export const EditEdiblePart = () => {
             harvest_start: ediblePart.harvest_start,
             harvest_end: ediblePart.harvest_end,
             image: ediblePart.image
-        }
+        } */
 
-        updatePart(partId, partToSend)
+        updatePart(partId, ediblePart)
             .then(() => {
                 navigate(`/manage-edible-profile/${ediblePart.wild_plant}`)
             })

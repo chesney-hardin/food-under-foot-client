@@ -2,7 +2,7 @@ import { useRef } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import Logo from "./fufLogo.png"
 
-export const UserNav = ({ token, setToken, isAdmin }) => {
+export const UserNav = ({ token, setToken }) => {
     const navigate = useNavigate()
     const navbar = useRef()
     const hamburger = useRef()
@@ -39,8 +39,6 @@ export const UserNav = ({ token, setToken, isAdmin }) => {
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/edibles">Wild Edibles</Link>
                                 </li>
-
-
 
                             </>
                             :

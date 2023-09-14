@@ -74,7 +74,9 @@ export const ManageEdibleProfile = () => {
         <div>==============================================================</div>
         <section>
             <div>Edible Parts: {edibleParts.map((part) =>
-                <article style={{ border: '1px solid #000', padding: '10px' }}>
+                <article 
+                key={`part--${part.id}`}
+                style={{ border: '1px solid #000', padding: '10px' }}>
                     <img src={part.image} alt="image of edible part" style={{ maxHeight: '100px' }} />
                     <div>{part.plant_part.label}</div>
                     <div>Harvest Season: {convertHarvestMonth(part.harvest_start)} - {convertHarvestMonth(part.harvest_end)}</div>

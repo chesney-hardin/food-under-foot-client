@@ -10,17 +10,17 @@ export const HarvestLogEditForm = () => {
     const [plants, setPlants] = useState([])
     const [fetchedLog, setFetchedLog] = useState({})
     const [harvestLog, setHarvestLog] = useState({
-      /*   wild_plant: 0,
+        wild_plant: 0,
         plant_part: 0,
         latitude: 0,
         longitude: 0,
         date: "",
-        isPublicLocation: false,
+        isPublicLocation: 0,
         quantity: "",
         title: "",
         description: "",
         image: "",
-        isPublic: false */
+        isPublic: 0
     })
 
     const navigate = useNavigate()
@@ -47,7 +47,6 @@ export const HarvestLogEditForm = () => {
                 description: fetchedLog.description,
                 image: fetchedLog.image,
                 isPublic: fetchedLog.isPublic
-
             })
         }
     }, [fetchedLog])

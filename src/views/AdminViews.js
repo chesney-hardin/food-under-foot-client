@@ -1,4 +1,4 @@
-import { Link, Route, Routes } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 import { AdminHome } from "../components/LandingPage/AdminHome"
 import { Login } from "../components/auth/Login"
 import { Register } from "../components/auth/Register"
@@ -10,6 +10,7 @@ import { EditEdibleProfileForm } from "../components/WildEdibles/EditEdibleProfi
 import { EditEdiblePart } from "../components/WildEdibles/EditEdiblePart"
 import { PublicHarvestLogs } from "../components/HarvestLogs/PublicHarvestLogs"
 import { HarvestGuidelines } from "../components/HarvestGuidelines/HarvestGuidelines"
+import { EdiblePlantProfile } from "../components/WildEdibles/EdiblePlantProfile"
 
 export const AdminViews = ({ token, setToken, staff, setStaff }) => {
     return <>
@@ -19,6 +20,7 @@ export const AdminViews = ({ token, setToken, staff, setStaff }) => {
             <Route element={<Authorized token={token} staff={staff} />}>
                 <Route path="/home" element={<AdminHome token={token} />} />
                 <Route path="/harvest-guidelines" element={<HarvestGuidelines />} />
+                <Route path="/edible-profile/:plantId" element={<EdiblePlantProfile />} />
                 <Route path="/manage-edibles" element={<ManageWildPlants token={token} />} />
                 <Route path="/manage-edible-profile/:plantId" element={<ManageEdibleProfile token={token} />} />
                 <Route path="/new-plant-form" element={<AdminNewPlantForm token={token} />} />

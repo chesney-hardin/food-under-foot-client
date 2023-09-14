@@ -15,10 +15,10 @@ export const UserHarvestLogs = () => {
     const deleteLog = (logId) => {
         const userConfirmed = window.confirm("Are you sure you want to PERMANENTLY DELETE this harvest log? This cannot be undone.");
         if (userConfirmed) {
-        deleteHarvestLog(logId)
-            .then(() => {
-                getCurrentUsersHarvestLogs().then((usersLogs) => { setHarvestLogs(usersLogs) })
-            })
+            deleteHarvestLog(logId)
+                .then(() => {
+                    getCurrentUsersHarvestLogs().then((usersLogs) => { setHarvestLogs(usersLogs) })
+                })
         }
     }
 
