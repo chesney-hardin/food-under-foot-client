@@ -6,6 +6,14 @@ export const getPublicHarvestLogsByPlantId = (plantId) => {
     }).then(res => res.json())
 }
 
+export const getPublicHarvestLogsByTitle = (plantId, searchTerm) => {
+    return fetch(`http://localhost:8000/harvestlogs?public&plant=${plantId}&title=${searchTerm}`, {
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("fuf_token")}`
+        }
+    }).then(res => res.json())
+}
+
 export const postNewHarvestLog = (newHarvestLog) => {
     return fetch("http://localhost:8000/harvestlogs", {
         method: "POST",
@@ -20,6 +28,13 @@ export const postNewHarvestLog = (newHarvestLog) => {
 
 export const getCurrentUsersHarvestLogs = () => {
     return fetch(`http://localhost:8000/harvestlogs?user`, {
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("fuf_token")}`
+        }
+    }).then(res => res.json())
+}
+export const getUsersSearchHarvestLogs = (searchTerm) => {
+    return fetch(`http://localhost:8000/harvestlogs?user&title=${searchTerm}`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("fuf_token")}`
         }

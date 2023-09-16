@@ -1,94 +1,60 @@
-
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { deleteHarvestLog, getCurrentUsersHarvestLogs } from "../../managers/HarvestLogsManager";
-import { MapView } from "./MapView";
+import React, { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { getCurrentUsersHarvestLogs, getUsersSearchHarvestLogs } from "../../managers/HarvestLogsManager"
+import { MapView } from "./MapView"
+import { HarvestLogList } from "./HarvestLogList"
+import { HarvestLogSearch } from "./HarvestLogSearch"
 
 export const UserHarvestLogs = () => {
-  const navigate = useNavigate();
-  const [harvestLogs, setHarvestLogs] = useState([]);
+  const navigate = useNavigate()
+  const [harvestLogs, setHarvestLogs] = useState([])
+  const [showEditDeleteButtons, setShowEditDeleteButtons] = useState(true)
+  const [searchTerms, setSearchTerms] = useState("")
 
   useEffect(() => {
-    getCurrentUsersHarvestLogs().then((usersLogs) => {
-      setHarvestLogs(usersLogs);
-    });
-  }, []);
+    getAllLogs()
+  }, [])
 
-  const deleteLog = (logId) => {
-    const userConfirmed = window.confirm(
-      "Are you sure you want to PERMANENTLY DELETE this harvest log? This cannot be undone."
-    );
-    if (userConfirmed) {
-      deleteHarvestLog(logId).then(() => {
-        getCurrentUsersHarvestLogs().then((usersLogs) => {
-          setHarvestLogs(usersLogs);
-        });
-      });
-    }
-  };
+  useEffect(() => {
+    getUsersSearchHarvestLogs(searchTerms).then((searchedLogs) => {
+      setHarvestLogs(searchedLogs)
+    })
+  }, [searchTerms])
+
+  const getAllLogs = () => {
+    getCurrentUsersHarvestLogs().then((usersLogs) => {
+      setHarvestLogs(usersLogs)
+    }) 
+  }
+
 
   return (
     <>
-      <div className="bg-gray-100 p-4">
+      <div className="bg-gray-100 p-2 pb-1">
         <h1 className="text-2xl font-semibold mb-4">Your Harvest Logs</h1>
+        <button
+          className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+          onClick={() => {
+            navigate(`/harvest-log-form`)
+          }}
+        >
+          Log a Harvest
+        </button>
         <MapView harvestLogs={harvestLogs} />
       </div>
-      <button
-        className="btn btn-1 btn-sep icon-send mt-4"
-        onClick={() => {
-          navigate(`/harvest-log-form`);
-        }}
-      >
-        Log a Harvest
-      </button>
-      <article className="p-4">
-        {harvestLogs.map((harvestLog) => (
-          <section
-            key={`harvestLog--${harvestLog.id}`}
-            className="border border-gray-300 rounded-md p-4 mb-4"
-          >
-            <h3 className="text-xl font-semibold mb-2">{harvestLog.title}</h3>
-            <img
-              src={harvestLog.image}
-              alt="image of harvest"
-              className="max-w-full mb-2"
-            />
-            <div>
-              Harvested:{" "}
-              <Link to={`/edible-profile/${harvestLog.wild_plant.id}`}>
-                {harvestLog.wild_plant.common_name}
-              </Link>{" "}
-              {harvestLog.plant_part.label}
-            </div>
-            <div>Date of Harvest: {harvestLog.date}</div>
-            <div>
-              Coordinates: {harvestLog.latitude}, {harvestLog.longitude}
-            </div>
-            <div>
-              {harvestLog.isPublicLocation
-                ? "This is a public location"
-                : "This is a private location"}
-            </div>
-            <div>Quantity: {harvestLog.quantity}</div>
-            <div>Description: {harvestLog.description}</div>
-            <button
-              className="btn btn-1 btn-sep icon-send mt-2"
-              onClick={() => {
-                navigate(`/edit-harvest-log/${harvestLog.id}`);
-              }}
-            >
-              Edit
-            </button>
-            <button
-              className="btn btn-1 btn-sep icon-send mt-2"
-              onClick={() => {
-                deleteLog(harvestLog.id);
-              }}
-            >
-              Delete
-            </button>
-          </section>
-        ))}
+      <article className="p-2 pb-1">
+        <HarvestLogSearch setSearchTerms={setSearchTerms} />
+        <button
+          className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+          onClick={getAllLogs}>
+          Show All
+        </button>
+      </article>
+      <article className="p-2 pb-1">
+        <HarvestLogList 
+          harvestLogs={harvestLogs}
+          setHarvestLogs={setHarvestLogs}
+          showEditDeleteButtons={showEditDeleteButtons} />
       </article>
     </>
   );

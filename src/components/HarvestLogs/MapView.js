@@ -130,8 +130,8 @@ export const MapView = ({ harvestLogs }) => {
   }, []);
 
   return (
-    <div className="bg-gray-100 h-screen">
-      <div className="p-4">
+    <div className="bg-gray-100 p-1">
+      <div className="p-2">
         <div className="bg-white rounded-lg shadow-md p-4 mb-4">
           <h1 className="text-2xl font-semibold mb-2">Map View</h1>
           <div className="text-sm">

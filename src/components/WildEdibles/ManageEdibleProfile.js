@@ -158,6 +158,12 @@ export const ManageEdibleProfile = () => {
           <h1 className="text-2xl font-semibold">
             {plant.common_name.toUpperCase()} ({plant.latin_name})
           </h1>
+          <button className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+              onClick={() => { navigate(`/edit-edible-profile/${plantId}`) }}
+            >Edit Profile</button>
+            <button className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+              onClick={deletePlantProfile}
+            >Delete Profile</button>
           <p className="text-gray-600">{plant.latin_family}</p>
           <p className="text-gray-600">Other common names: {plant.alternate_names}</p>
           <p className="mt-2">{plant.description}</p>
@@ -167,25 +173,18 @@ export const ManageEdibleProfile = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            More Plant Information
+            USDA {plant.common_name} Profile
           </a>
           <div className="space-y-4 mt-4">
             <button
               onClick={() => {
-                navigate(`/harvest-log-form`);
-              }}
-              className="btn btn-1 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
-            >
-              Log a Harvest
-            </button>
-            <button
-              onClick={() => {
                 navigate(`/public-harvest-logs/${plantId}`);
               }}
-              className="btn btn-1 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+              className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
             >
               Public Harvest Logs
             </button>
+
           </div>
         </div>
         <div className="w-4/6">
@@ -208,8 +207,19 @@ export const ManageEdibleProfile = () => {
               {convertHarvestMonth(part.harvest_start)} - {convertHarvestMonth(part.harvest_end)}
             </div>
             <img src={part.image} alt="image of edible part" className="max-h-24 mx-auto rounded-lg shadow-lg" />
+            <button className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+              onClick={() => { navigate(`/edit-edible-part/${part.id}`) }}
+            >Edit Part</button>
+            <button className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+              onClick={() => { deletePart(part.id) }}
+            >Delete Part</button>
           </article>
         ))}
+        {showEdiblePartForm ?
+                <AdminNewEdiblePart plant={plant} setShowEdiblePartForm={setShowEdiblePartForm} setEdibleParts={setEdibleParts} />
+                : <button className="w-56 px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+                    onClick={() => { setShowEdiblePartForm(true) }}
+                >+ Add An Edible Part</button>}
       </div>
     </section>
   );
