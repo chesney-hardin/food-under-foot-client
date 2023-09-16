@@ -174,7 +174,7 @@ export const AdminNewEdiblePart = ({ plant, setShowEdiblePartForm, setEdiblePart
   useEffect(() => {
     getUsabilityTypes().then((types) => setUsabilityTypes(types));
     getPlantParts().then((parts) => setPlantParts(parts));
-  }, []);
+  }, [])
 
   const handleSaveButtonClick = (event) => {
     event.preventDefault();

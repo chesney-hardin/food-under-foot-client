@@ -45,3 +45,28 @@ export const updatePlant = (plantId, plant) => {
         body: JSON.stringify(plant)
     })
 }
+
+
+export const getPlantsByEdiblePart = (partId) => {
+    return fetch(`http://localhost:8000/wildplants?edible_part=${partId}`, {
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("fuf_token")}`
+        }
+    }).then(res => res.json());
+}
+
+export const getPlantsByCommonName = (searchTerm) => {
+    return fetch(`http://localhost:8000/wildplants?common_name=${searchTerm}`, {
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("fuf_token")}`
+        }
+    }).then(res => res.json())
+}
+
+export const getPlantsByNameAndPart = (searchTerm, partId) => {
+    return fetch(`http://localhost:8000/wildplants?common_name=${searchTerm}&edible_part=${partId}`, {
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("fuf_token")}`
+        }
+    }).then(res => res.json())
+}
