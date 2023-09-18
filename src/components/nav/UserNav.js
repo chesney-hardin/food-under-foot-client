@@ -57,6 +57,12 @@ export const UserNav = ({ token, setToken }) => {
                             </Link>
                             <Link
                                 className="block px-4 py-2 text-fuf-teal hover:bg-fuf-teal-200"
+                                to="/user-tips-recipes"
+                            >
+                                Your Recipes and Tips
+                            </Link>
+                            <Link
+                                className="block px-4 py-2 text-fuf-teal hover:bg-fuf-teal-200"
                                 to="/edibles"
                             >
                                 Wild Edibles

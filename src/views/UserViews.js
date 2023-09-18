@@ -10,6 +10,9 @@ import { HarvestLogForm } from "../components/HarvestLogs/HarvestLogForm"
 import { UserHarvestLogs } from "../components/HarvestLogs/UserHarvestLogs"
 import { HarvestLogEditForm } from "../components/HarvestLogs/HarvestLogEditForm"
 import { HarvestGuidelines } from "../components/HarvestGuidelines/HarvestGuidelines"
+import { TipForm } from "../components/TipsAndRecipes/TipForm"
+import { UserTipsAndRecipes } from "../components/TipsAndRecipes/UserTipsRecipes"
+import { TipEditForm } from "../components/TipsAndRecipes/TipEditForm"
 
 
 export const UserViews = ({ token, setToken, staff, setStaff }) => {
@@ -26,6 +29,9 @@ export const UserViews = ({ token, setToken, staff, setStaff }) => {
                 <Route path="/harvest-log-form" element={<HarvestLogForm token={token} />} />
                 <Route path="/user-harvest-logs" element={<UserHarvestLogs token={token} />} />
                 <Route path="/edit-harvest-log/:harvestLogId" element={<HarvestLogEditForm />} />
+                <Route path="/add-tip/:plantId" element={<TipForm />} />
+                <Route path="/edit-tip/:tipId" element={<TipEditForm />} />
+                <Route path="/user-tips-recipes" element={<UserTipsAndRecipes />} />
                 
             </Route>
         </Routes>

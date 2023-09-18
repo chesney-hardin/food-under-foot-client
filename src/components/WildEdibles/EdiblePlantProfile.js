@@ -80,7 +80,7 @@ export const EdiblePlantProfile = () => {
     created_by: 0,
     edible_parts: [],
   });
-  const [edibleParts, setEdibleParts] = useState([]);
+  const [edibleParts, setEdibleParts] = useState([])
 
   useEffect(() => {
     getSinglePlant(plantId).then((plantData) => setPlant(plantData));
@@ -158,5 +158,5 @@ export const EdiblePlantProfile = () => {
         <TipsAndRecipesList plantId={plantId}/>      
       </article>
     </section>
-  );
-};
+  )
+}
