@@ -63,6 +63,7 @@ export const EdiblePlantProfile = () => {
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { getSinglePlant } from "../../managers/WildPlantsManager";
 import { getEdiblePartsOfAPlant } from "../../managers/EdiblePartsManager";
+import { TipsAndRecipesList } from "../TipsAndRecipes/TipsAndRecipesList";
 
 export const EdiblePlantProfile = () => {
   const { plantId } = useParams();
@@ -153,6 +154,9 @@ export const EdiblePlantProfile = () => {
           </article>
         ))}
       </div>
+      <article>
+        <TipsAndRecipesList plantId={plantId}/>      
+      </article>
     </section>
   );
 };
