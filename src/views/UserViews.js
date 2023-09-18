@@ -13,6 +13,8 @@ import { HarvestGuidelines } from "../components/HarvestGuidelines/HarvestGuidel
 import { TipForm } from "../components/TipsAndRecipes/TipForm"
 import { UserTipsAndRecipes } from "../components/TipsAndRecipes/UserTipsRecipes"
 import { TipEditForm } from "../components/TipsAndRecipes/TipEditForm"
+import { RecipeForm } from "../components/TipsAndRecipes/RecipeForm"
+import { RecipeEditForm } from "../components/TipsAndRecipes/RecipeEditForm"
 
 
 export const UserViews = ({ token, setToken, staff, setStaff }) => {
@@ -32,6 +34,8 @@ export const UserViews = ({ token, setToken, staff, setStaff }) => {
                 <Route path="/add-tip/:plantId" element={<TipForm />} />
                 <Route path="/edit-tip/:tipId" element={<TipEditForm />} />
                 <Route path="/user-tips-recipes" element={<UserTipsAndRecipes />} />
+                <Route path="/add-recipe/:plantId" element={<RecipeForm />} />
+                <Route path="/edit-recipe/:recipeId" element={<RecipeEditForm />} />
                 
             </Route>
         </Routes>

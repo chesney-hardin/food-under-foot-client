@@ -20,7 +20,7 @@ export const UserTipsAndRecipes = () => {
 
     const destroyTipOrRecipe = (id) => {
         const userConfirmed = window.confirm(
-            "Are you sure you want to PERMANENTLY DELETE this tip or recipe? This cannot be undone."
+            "Are you sure you want to PERMANENTLY DELETE this tip/recipe? This cannot be undone."
         )
         if (userConfirmed) {
             deleteTipOrRecipe(id).then(() => {

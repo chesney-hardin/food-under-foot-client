@@ -14,7 +14,7 @@ export const getApprovedRecipesByPlantId = (plantId) => {
     }).then(res => res.json())
 }
 
-export const postNewTip = (newTip) => {
+export const postNewTipOrRecipe = (body) => {
     return fetch("http://localhost:8000/tipsandrecipes", {
         method: "POST",
         headers: {
@@ -22,7 +22,7 @@ export const postNewTip = (newTip) => {
             "Accept": "application/json",
             "Authorization": `Token ${localStorage.getItem("fuf_token")}`
         },
-        body: JSON.stringify(newTip)
+        body: JSON.stringify(body)
     }).then(res => res.json())
 }
 
@@ -69,3 +69,20 @@ export const deleteTipOrRecipe  = (id) => {
         }
     })
   }
+
+  export const getUnapprovedRecipesForReview = () => {
+    return fetch(`http://localhost:8000/tipsandrecipes?unapproved&recipes&review`, {
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("fuf_token")}`
+        }
+    }).then(res => res.json())
+}
+
+export const getUnapprovedTipsForReview = () => {
+    return fetch(`http://localhost:8000/tipsandrecipes?approved&tips&review`, {
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("fuf_token")}`
+        }
+    }).then(res => res.json())
+}
+

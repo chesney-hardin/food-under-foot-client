@@ -19,32 +19,32 @@ export const TipEditForm = () => {
 
   useEffect(() => {
     getPlantParts().then((parts) => setPlantParts(parts));
-}, [])
+  }, [])
 
   useEffect(() => {
-    if(tipId) {
+    if (tipId) {
       getTipsOrRecipesById(tipId).then((tip) => setFetchedTip(tip))
     }
   }, [tipId])
 
   useEffect(() => {
     if (fetchedTip.id) {
-        setTip({
-            id: fetchedTip.id,
-            user: fetchedTip.user.id,
-            wild_plant: fetchedTip.wild_plant.id,
-            plant_part: fetchedTip.plant_part.id,
-            date: fetchedTip.date,
-            title: fetchedTip.title,
-            description: fetchedTip.description,
-            image: fetchedTip.image,
-            isRecipe: fetchedTip.isRecipe,
-            isApproved: false,
-            needsReview: true,
-            reasonUnapproved: fetchedTip.reasonUnapproved
-        })
+      setTip({
+        id: fetchedTip.id,
+        user: fetchedTip.user.id,
+        wild_plant: fetchedTip.wild_plant.id,
+        plant_part: fetchedTip.plant_part.id,
+        date: fetchedTip.date,
+        title: fetchedTip.title,
+        description: fetchedTip.description,
+        image: fetchedTip.image,
+        isRecipe: fetchedTip.isRecipe,
+        isApproved: false,
+        needsReview: true,
+        reasonUnapproved: fetchedTip.reasonUnapproved
+      })
     }
-}, [fetchedTip])
+  }, [fetchedTip])
 
 
   const handleSaveButtonClick = (event) => {
@@ -71,27 +71,41 @@ export const TipEditForm = () => {
       <section className="bg-white p-4 rounded-lg shadow-lg">
         <h1 className="text-2xl font-semibold mb-4">Add a tip for {plant.common_name}:</h1>
         <form>
-            <div className="mb-4">
-              <label htmlFor="plant_part">Plant Part:</label>
-              <select
-                value={tip.plant_part}
-                required
-                autoFocus
-                name="plant_part"
-                onChange={handleChange}
-                className="form-select"
-              >
-                <option value="0">Select Edible Part</option>
-                {plantParts.map((plantPart) => (
-                  <option
-                    key={`plantPart--${plantPart.id}`}
-                    value={plantPart.id}
-                  >
-                    {plantPart.label}
-                  </option>
-                ))}
-              </select>
-            </div>
+          <div className="mb-4">
+            <label htmlFor="title" className="block text-sm font-medium text-gray-700">
+              Title:
+            </label>
+            <input
+              required
+              autoFocus
+              type="text"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+              placeholder="Memorable title..."
+              name="title"
+              value={tip.title}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="plant_part">Plant Part:</label>
+            <select
+              value={tip.plant_part}
+              required
+              name="plant_part"
+              onChange={handleChange}
+              className="form-select"
+            >
+              <option value="0">Select Edible Part</option>
+              {plantParts.map((plantPart) => (
+                <option
+                  key={`plantPart--${plantPart.id}`}
+                  value={plantPart.id}
+                >
+                  {plantPart.label}
+                </option>
+              ))}
+            </select>
+          </div>
           <div className="mb-4">
             <label htmlFor="description" className="block text-sm font-medium text-gray-700">
               Description:
@@ -104,7 +118,7 @@ export const TipEditForm = () => {
               onChange={handleChange}
               rows="5"
             >
-            Harvesting techniques, companion plants, sustainable practices, post-harvest care, etc....
+              Harvesting techniques, companion plants, sustainable practices, post-harvest care, etc....
             </textarea>
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -134,5 +148,5 @@ export const TipEditForm = () => {
         </form>
       </section>
     </section>
-  );
-};
+  )
+}

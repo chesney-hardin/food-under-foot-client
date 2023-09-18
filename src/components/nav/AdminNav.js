@@ -55,6 +55,12 @@ export const AdminNav = ({ token, setToken }) => {
                             >
                                 Harvest Guidelines
                             </Link>
+                            <Link
+                                to="/tips-recipes-review/"
+                                className="block px-4 py-2 text-fuf-teal hover:bg-fuf-teal-200"
+                            >
+                                Review Tips and Recipes
+                            </Link>
                             <button
                                 className="block w-full text-left px-4 py-2 text-fuf-teal hover:bg-gray-200"
                                 onClick={handleLogout}

@@ -11,6 +11,8 @@ import { EditEdiblePart } from "../components/WildEdibles/EditEdiblePart"
 import { PublicHarvestLogs } from "../components/HarvestLogs/PublicHarvestLogs"
 import { HarvestGuidelines } from "../components/HarvestGuidelines/HarvestGuidelines"
 import { EdiblePlantProfile } from "../components/WildEdibles/EdiblePlantProfile"
+import { AdminReviewRecipeTipList } from "../components/TipsAndRecipes/AdminReviewRecipeTipsList"
+import { ReviewRecipeTipForm } from "../components/TipsAndRecipes/ReviewRecipeTipForm"
 
 export const AdminViews = ({ token, setToken, staff, setStaff }) => {
     return <>
@@ -27,6 +29,8 @@ export const AdminViews = ({ token, setToken, staff, setStaff }) => {
                 <Route path="/edit-edible-profile/:plantId" element={<EditEdibleProfileForm />} />
                 <Route path="/edit-edible-part/:partId" element={<EditEdiblePart />} />
                 <Route path="/harvest-logs/:plantId" element={<PublicHarvestLogs />} />
+                <Route path="/tips-recipes-review/" element={<AdminReviewRecipeTipList />} />
+                <Route path="/tips-recipes-review/:recipeTipId" element={<ReviewRecipeTipForm />} />
             </Route>
         </Routes>
     </>
