@@ -15,11 +15,13 @@ import { UserTipsAndRecipes } from "../components/TipsAndRecipes/UserTipsRecipes
 import { TipEditForm } from "../components/TipsAndRecipes/TipEditForm"
 import { RecipeForm } from "../components/TipsAndRecipes/RecipeForm"
 import { RecipeEditForm } from "../components/TipsAndRecipes/RecipeEditForm"
+import { MainLandingPage } from "../components/LandingPage/MainLandingPage"
 
 
 export const UserViews = ({ token, setToken, staff, setStaff }) => {
     return <>
         <Routes>
+            <Route path="/" element={<MainLandingPage />} />
             <Route path="/login" element={<Login setToken={setToken} setStaff={setStaff} staff={staff}/>} />
             <Route path="/register" element={<Register setToken={setToken} setStaff={setStaff}/>} />
             <Route element={<Authorized token={token} staff={staff} />}>

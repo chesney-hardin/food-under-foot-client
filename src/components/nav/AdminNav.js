@@ -36,33 +36,33 @@ export const AdminNav = ({ token, setToken }) => {
                         </button>
                     )}
                     {token && isDropdownOpen ? (
-                        <div className="absolute right-0 mt-2 py-2 bg-fuf-green rounded-md shadow-lg z-10">
+                        <div className="absolute right-0 mt-2 py-2 w-36 bg-fuf-teal rounded-md shadow-lg z-10">
                             <Link
                                 to="/home"
-                                className="block px-4 py-2 text-fuf-teal hover:bg-fuf-teal-200"
+                                className="block px-4 py-2 text-gray-700 hover:bg-fuf-teal-200"
                             >
                                 Home
                             </Link>
                             <Link
                                 to="/manage-edibles"
-                                className="block px-4 py-2 text-fuf-teal hover:bg-fuf-teal-200"
+                                className="block px-4 py-2 text-gray-700 hover:bg-fuf-teal-200"
                             >
                                 Manage Wild Edibles
                             </Link>
                             <Link
                                 to="/harvest-guidelines"
-                                className="block px-4 py-2 text-fuf-teal hover:bg-fuf-teal-200"
+                                className="block px-4 py-2 text-gray-700 hover:bg-fuf-teal-200"
                             >
                                 Harvest Guidelines
                             </Link>
                             <Link
                                 to="/tips-recipes-review/"
-                                className="block px-4 py-2 text-fuf-teal hover:bg-fuf-teal-200"
+                                className="block px-4 py-2 text-gray-700 hover:bg-fuf-teal-200"
                             >
                                 Review Tips and Recipes
                             </Link>
                             <button
-                                className="block w-full text-left px-4 py-2 text-fuf-teal hover:bg-gray-200"
+                                className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-200"
                                 onClick={handleLogout}
                             >
                                 Logout

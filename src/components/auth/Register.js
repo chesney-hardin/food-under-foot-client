@@ -213,22 +213,23 @@ export const Register = () => {
             name="accountType"
             className="form-select w-full rounded border-gray-300"
           >
+            <option value="0">Select type</option>
             <option value="admin">Admin</option>
             <option value="user">User</option>
           </select>
         </div>
         <div className="text-center">
           <button
-            className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full transition-transform transform hover:scale-105 focus:outline-none"
+            className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
             type="submit"
           >
             Register
           </button>
         </div>
-      </form>
       <div className="mt-4 text-center">
         Already registered? <Link to="/login" className="text-blue-500 hover:underline">Login</Link>
       </div>
+      </form>
     </main>
   );
 };

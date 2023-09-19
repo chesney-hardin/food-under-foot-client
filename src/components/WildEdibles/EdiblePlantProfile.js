@@ -97,7 +97,7 @@ export const EdiblePlantProfile = () => {
   return (
     <section className="bg-white p-4 rounded-lg shadow-lg">
       <div className="flex">
-        <div className="w-1/4 pr-1">
+        <div className="w-1/4 pr-1 rounded-lg shadow-lg">
           <div className="grid pr-1">
             {edibleParts.map((part) => (
               <article key={`part--${part.id}`} className="bg-gray-100 p-4 rounded-lg">
@@ -115,7 +115,7 @@ export const EdiblePlantProfile = () => {
         </div>
 
         <div className="w-3/4 flex justify-between">
-          <div className="w-2/3 ml-4">
+          <div className="w-2/3 ml-8">
             <h1 className="text-2xl font-semibold">
               {plant.common_name.toUpperCase()} ({plant.latin_name})
             </h1>
@@ -139,6 +139,14 @@ export const EdiblePlantProfile = () => {
               className="w-full rounded-lg shadow-lg"
             />
             <div className="space-y-4 mt-4">
+            <button
+                onClick={() => {
+                  navigate(`/public-harvest-logs/${plantId}`);
+                }}
+                className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+              >
+                Public Harvest Logs
+              </button>
               <button
                 onClick={() => {
                   navigate(`/harvest-log-form`);
@@ -147,14 +155,7 @@ export const EdiblePlantProfile = () => {
               >
                 Log a Harvest
               </button>
-              <button
-                onClick={() => {
-                  navigate(`/public-harvest-logs/${plantId}`);
-                }}
-                className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
-              >
-                Public Harvest Logs
-              </button>
+             
             </div>
           </div>
         </div>

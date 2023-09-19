@@ -1,4 +1,3 @@
-
 import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../../managers/AuthManager";
@@ -40,7 +39,10 @@ export const Login = ({ setToken, setStaff }) => {
   return (
     <main className="bg-white min-h-full flex items-center justify-center">
       <section className="bg-white rounded-lg shadow-lg p-8 max-w-md w-full">
-        <h1 className="text-3xl font-bold mb-4">Food Under Foot</h1>
+        <div className="rounded-lg shadow-lg px-8 py-3 bg-fuf-green font-sans mb-8 text-center">
+          <h1 className="text-4xl font-sans text-fuf-teal font-bold">Food Under Foot</h1>
+          <div className="text-l font-sans text-fuf-teal italic">*** Nashville Edition ***</div>
+        </div>
         <h2 className="text-xl mb-4">Please sign in</h2>
         <form onSubmit={handleLogin}>
           <div className="mb-4">
@@ -72,7 +74,7 @@ export const Login = ({ setToken, setStaff }) => {
           </div>
           <div className="text-center">
             <button
-              className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full transition-transform transform hover:scale-105 focus:outline-none"
+              className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
               type="submit"
             >
               Sign In

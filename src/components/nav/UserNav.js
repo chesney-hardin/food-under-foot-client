@@ -36,39 +36,41 @@ export const UserNav = ({ token, setToken }) => {
                         </button>
                     )}
                     {token && isDropdownOpen ? (
-                        <div className="absolute right-0 mt-2 py-2 bg-fuf-green rounded-md shadow-lg z-10">
+                        <div className="absolute right-0 mt-2 py-2 w-36 bg-fuf-teal rounded-md shadow-lg z-10">
+                            
                             <Link
-                                className="block px-4 py-2 text-fuf-teal hover:bg-fuf-teal-200"
+                                className="block px-4 py-2 text-gray-700 hover:bg-fuf-teal-200"
                                 to="/home"
                             >
                                 Home
                             </Link>
+                           
                             <Link
-                                className="block px-4 py-2 text-fuf-teal hover:bg-fuf-teal-200"
+                                className="block px-4 py-2 text-gray-700 hover:bg-fuf-teal-200"
                                 to="/harvest-guidelines"
                             >
                                 Harvest Guidelines
                             </Link>
                             <Link
-                                className="block px-4 py-2 text-fuf-teal hover:bg-fuf-teal-200"
+                                className="block px-4 py-2 text-gray-700 hover:bg-fuf-teal-200"
                                 to="/user-harvest-logs"
                             >
                                 Your Harvest Logs
                             </Link>
                             <Link
-                                className="block px-4 py-2 text-fuf-teal hover:bg-fuf-teal-200"
+                                className="block px-4 py-2 text-gray-700 hover:bg-fuf-teal-200"
                                 to="/user-tips-recipes"
                             >
                                 Your Recipes and Tips
                             </Link>
                             <Link
-                                className="block px-4 py-2 text-fuf-teal hover:bg-fuf-teal-200"
+                                className="block px-4 py-2 text-gray-700 hover:bg-fuf-teal-200"
                                 to="/edibles"
                             >
                                 Wild Edibles
                             </Link>
                             <button
-                                className="block w-full text-left px-4 py-2 text-fuf-teal hover:bg-gray-200"
+                                className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-200"
                                 onClick={handleLogout}
                             >
                                 Logout
@@ -81,4 +83,4 @@ export const UserNav = ({ token, setToken }) => {
             </div>
         </nav>
     );
-};
+}; 
