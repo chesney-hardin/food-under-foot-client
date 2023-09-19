@@ -27,14 +27,17 @@ export const HarvestLogList = ({ harvestLogs, setHarvestLogs, showEditDeleteButt
                 {harvestLogs.map((harvestLog) => (
                     <section
                         key={`harvestLog--${harvestLog.id}`}
-                        className="border border-gray-300 rounded-md p-4 mb-4"
+                        className="border border-gray-300 rounded-md p-4 mb-4 flex"
                     >
+                        <div className="w-1/3 pr-1">
                         <h3 className="text-xl font-semibold mb-2">{harvestLog.title}</h3>
                         <img
                             src={harvestLog.image}
                             alt="image of harvest"
-                            className="max-w-full mb-2"
+                            className="max-h-36 rounded-lg shadow-lg"
                         />
+                        </div>
+                        <div className="w-2/3 pr-1">
                         <div>
                             Harvested: {harvestLog.wild_plant.common_name}{" "}
                             {harvestLog.plant_part.label}
@@ -53,10 +56,11 @@ export const HarvestLogList = ({ harvestLogs, setHarvestLogs, showEditDeleteButt
                         </div>
                         <div>Quantity: {harvestLog.quantity}</div>
                         <div>Description: {harvestLog.description}</div>
+                        </div>
                         {showEditDeleteButtons ?
                             <div>
                                 <button
-                                    className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+                                    className="px-4 py-2 m-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
                                     onClick={() => {
                                         navigate(`/edit-harvest-log/${harvestLog.id}`);
                                     }}

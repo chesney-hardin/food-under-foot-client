@@ -24,8 +24,7 @@ export const WildEdiblesSearch = ({ setSearchState }) => {
             }}
             type="text" placeholder="Search common names" />
 
-        <div className="mb-4">
-            <label htmlFor="plant_part">Plant Part:</label>
+        <div className="mb-4 py-2">
             <select
                 value={search.partId}
                 name="partId"
@@ -34,7 +33,7 @@ export const WildEdiblesSearch = ({ setSearchState }) => {
                     copy.partId = parseInt(event.target.value)
                     setSearch(copy)
                 }}
-                className="form-select"
+                className="form-select rounded-md border-gray-300 shadow-sm focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
             >
                 <option value="0">Select Edible Part</option>
                 {plantParts.map((plantPart) => (

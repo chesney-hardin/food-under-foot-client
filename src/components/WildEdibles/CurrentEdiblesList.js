@@ -38,18 +38,22 @@ export const CurrentEdiblesList = () => {
         getCurrentEdibles().then((plantData) => setEdibles(plantData))
     }, [])
 
-    return <article className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {edibles.map((plant) => (
-            <section 
-                key={`plant--${plant.id}`}
-                className="border-2 border-black p-4 rounded overflow-hidden hover:scale-105 cursor-pointer"
-                onClick={() => { navigate(`/edible-profile/${plant?.wild_plant?.id}`) }}
-            >
-                <img src={plant?.wild_plant?.image} alt="image of edible plant" className="w-full h-40 object-cover" />
-                <div className="text-xl font-bold mt-2 mb-1">{plant?.wild_plant?.common_name.toUpperCase()}</div>
-                <div className="text-lg">{plant?.plant_part?.label}</div>
-            </section>
-        ))}
-    </article>
+    return (
+        <div >
+            <article className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {edibles.map((plant) => (
+                    <section
+                        key={`plant--${plant.id}`}
+                        className="bg-white p-4 rounded-lg shadow-md mt-4 my-2 cursor-pointer"
+                        onClick={() => { navigate(`/edible-profile/${plant?.wild_plant?.id}`) }}
+                    >
+                        <img src={plant?.wild_plant?.image} alt="image of edible plant" className="w-full h-40 object-cover" />
+                        <div className="text-xl font-bold mt-2 mb-1">{plant?.wild_plant?.common_name.toUpperCase()}</div>
+                        <div className="text-lg">{plant?.plant_part?.label}</div>
+                    </section>
+                ))}
+            </article>
+        </div>
+    )
 }
 

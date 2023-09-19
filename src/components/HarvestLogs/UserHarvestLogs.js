@@ -30,8 +30,18 @@ export const UserHarvestLogs = () => {
 
   return (
     <>
-      <div className="bg-gray-100 p-2 pb-1">
+      <div className="bg-gray-100 p-2 pb-1 px-16">
         <h1 className="text-2xl font-semibold mb-4">Your Harvest Logs</h1>
+     
+        <MapView harvestLogs={harvestLogs} />
+      </div>
+      <article className="p-2 pb-1 px-8">
+        <HarvestLogSearch setSearchTerms={setSearchTerms} />
+        <button
+          className="px-4 py-2 m-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+          onClick={getAllLogs}>
+          Show All
+        </button>
         <button
           className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
           onClick={() => {
@@ -40,17 +50,8 @@ export const UserHarvestLogs = () => {
         >
           Log a Harvest
         </button>
-        <MapView harvestLogs={harvestLogs} />
-      </div>
-      <article className="p-2 pb-1">
-        <HarvestLogSearch setSearchTerms={setSearchTerms} />
-        <button
-          className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
-          onClick={getAllLogs}>
-          Show All
-        </button>
       </article>
-      <article className="p-2 pb-1">
+      <article className="p-2 pb-1 px-8">
         <HarvestLogList 
           harvestLogs={harvestLogs}
           setHarvestLogs={setHarvestLogs}
