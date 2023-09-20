@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { getWildPlants } from "../../managers/WildPlantsManager";
+import { useNavigate, useParams } from "react-router-dom";
+import { getSinglePlant, getWildPlants } from "../../managers/WildPlantsManager";
 import { getPlantParts } from "../../managers/PlantPartsManager";
 import { postNewHarvestLog } from "../../managers/HarvestLogsManager";
 import { SelectCoordinatesMap } from "./SelectCoordinatesMap";
 
 export const HarvestLogForm = () => {
-  const [plantParts, setPlantParts] = useState([]);
-  const [plants, setPlants] = useState([]);
+  const { plantId } = useParams()
+  const [plantParts, setPlantParts] = useState([])
+  const [plants, setPlants] = useState([])
   const [newHarvestLog, setNewHarvestLog] = useState({
     wild_plant: 0,
     plant_part: 0,
@@ -20,31 +21,40 @@ export const HarvestLogForm = () => {
     description: "",
     image: "",
     isPublic: 0,
-  });
+  })
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   useEffect(() => {
-    getWildPlants().then((plantData) => setPlants(plantData));
-    getPlantParts().then((parts) => setPlantParts(parts));
-  }, []);
+    getWildPlants().then((plantData) => setPlants(plantData))
+    getPlantParts().then((parts) => setPlantParts(parts))
+  }, [])
+
+  useEffect(() => {
+    if(plantId){
+      const copy = { ...newHarvestLog }
+      getSinglePlant(plantId).then((plantData) => {
+        copy.wild_plant = plantData.id
+        setNewHarvestLog(copy)
+      })}
+  }, [plantId])
 
   const handleSaveButtonClick = (event) => {
     event.preventDefault();
     postNewHarvestLog(newHarvestLog).then(() => {
-      navigate(`/user-harvest-logs`);
-    });
-  };
+      navigate(`/user-harvest-logs`)
+    })
+  }
 
   const handleChange = (event) => {
-    const copy = { ...newHarvestLog };
-    copy[event.target.name] = event.target.value;
-    setNewHarvestLog(copy);
-  };
+    const copy = { ...newHarvestLog }
+    copy[event.target.name] = event.target.value
+    setNewHarvestLog(copy)
+  }
 
   return (
     <section className="p-4 bg-white">
-      <section className="bg-white p-12 rounded-lg shadow-lg">
+      <section className="bg-white p-12 rounded-lg shadow-lg mx-20">
         <h1 className="text-2xl font-semibold mb-4">Log a Harvest:</h1>
         <SelectCoordinatesMap newHarvestLog={newHarvestLog} setNewHarvestLog={setNewHarvestLog} />
         <form>
@@ -116,7 +126,7 @@ export const HarvestLogForm = () => {
             />
           </fieldset>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {/* Plant */}
+
             <fieldset className="mb-4">
               <label htmlFor="wild_plant" className="block text-sm font-medium text-gray-700">
                 Plant:
@@ -141,7 +151,6 @@ export const HarvestLogForm = () => {
               </select>
             </fieldset>
 
-            {/* Part Harvested */}
             <fieldset className="mb-4">
               <label htmlFor="plant_part" className="block text-sm font-medium text-gray-700">
                 Part Harvested:
@@ -167,8 +176,6 @@ export const HarvestLogForm = () => {
             </fieldset>
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-
-            {/* Date of Harvest */}
             <fieldset className="mb-4">
               <label htmlFor="date" className="block text-sm font-medium text-gray-700">
                 Date of Harvest:
@@ -183,7 +190,6 @@ export const HarvestLogForm = () => {
               />
             </fieldset>
 
-            {/* Quantity */}
             <fieldset className="mb-4">
               <label htmlFor="quantity" className="block text-sm font-medium text-gray-700">
                 Quantity:
@@ -200,7 +206,6 @@ export const HarvestLogForm = () => {
             </fieldset>
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {/* Make Public */}
             <fieldset className="mb-4">
               <label htmlFor="isPublic" className="block text-sm font-medium text-gray-700">
                 Make this harvest log public?

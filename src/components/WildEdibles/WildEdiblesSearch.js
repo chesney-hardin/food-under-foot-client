@@ -15,7 +15,7 @@ export const WildEdiblesSearch = ({ setSearchState }) => {
 
     return <>
         <input
-            className="mt-1 rounded-md border-gray-300 shadow-sm focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+            className="mt-2 rounded-md border-gray-300 shadow-sm focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
             name="name"
             onChange={(event) => {
                 const copy = { ...search }
@@ -24,7 +24,7 @@ export const WildEdiblesSearch = ({ setSearchState }) => {
             }}
             type="text" placeholder="Search common names" />
 
-        <div className="mb-4 py-2">
+        <div className="py-2">
             <select
                 value={search.partId}
                 name="partId"

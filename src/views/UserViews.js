@@ -30,8 +30,9 @@ export const UserViews = ({ token, setToken, staff, setStaff }) => {
                 <Route path="/harvest-guidelines" element={<HarvestGuidelines />} />
                 <Route path="/edible-profile/:plantId" element={<EdiblePlantProfile />} />
                 <Route path="/public-harvest-logs/:plantId" element={<PublicHarvestLogs />} />
-                <Route path="/harvest-log-form" element={<HarvestLogForm token={token} />} />
-                <Route path="/user-harvest-logs" element={<UserHarvestLogs token={token} />} />
+                <Route path="/harvest-log-form" element={<HarvestLogForm />} />
+                <Route path="/harvest-log-form/:plantId" element={<HarvestLogForm />} />
+                <Route path="/user-harvest-logs" element={<UserHarvestLogs />} />
                 <Route path="/edit-harvest-log/:harvestLogId" element={<HarvestLogEditForm />} />
                 <Route path="/add-tip/:plantId" element={<TipForm />} />
                 <Route path="/edit-tip/:tipId" element={<TipEditForm />} />

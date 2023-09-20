@@ -1,21 +1,27 @@
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "./logo-fuf.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getUnapprovedRecipesAndTipsForReview } from "../../managers/TipsAndRecipesManager";
 
 export const AdminNav = ({ token, setToken }) => {
     const navigate = useNavigate();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+    const [needReview, setNeedReview] = useState(0)
+
+    useEffect(() => {
+        getUnapprovedRecipesAndTipsForReview().then((posts) => setNeedReview(posts.length))
+    }, [])
 
 
     const toggleDropdown = () => {
-        setIsDropdownOpen(!isDropdownOpen);
-    };
+        setIsDropdownOpen(!isDropdownOpen)
+    }
 
     const handleLogout = () => {
         setToken("");
         localStorage.removeItem("staff");
         navigate("/login");
-    };
+    }
 
     return (
         <nav className="bg-white py-4 px-6">
@@ -57,9 +63,10 @@ export const AdminNav = ({ token, setToken }) => {
                             </Link>
                             <Link
                                 to="/tips-recipes-review/"
-                                className="block px-4 py-2 text-gray-700 hover:bg-fuf-teal-200"
+                                className=" px-4 py-2 text-gray-700 hover:bg-fuf-teal-200 flex"
                             >
-                                Review Tips and Recipes
+                                Review Tips and Recipes 
+                                <div className="bg-fuf-green rounded-full font-bold text-fuf-teal p-1 align-middle my-2">{needReview}</div>
                             </Link>
                             <button
                                 className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-200"

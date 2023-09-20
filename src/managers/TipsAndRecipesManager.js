@@ -79,10 +79,16 @@ export const deleteTipOrRecipe  = (id) => {
 }
 
 export const getUnapprovedTipsForReview = () => {
-    return fetch(`http://localhost:8000/tipsandrecipes?approved&tips&review`, {
+    return fetch(`http://localhost:8000/tipsandrecipes?unapproved&tips&review`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("fuf_token")}`
         }
     }).then(res => res.json())
 }
-
+export const getUnapprovedRecipesAndTipsForReview = () => {
+    return fetch(`http://localhost:8000/tipsandrecipes?unapproved&review`, {
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("fuf_token")}`
+        }
+    }).then(res => res.json())
+}
