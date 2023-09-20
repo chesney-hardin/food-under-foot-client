@@ -32,14 +32,12 @@ export const UserTipsAndRecipes = () => {
 
     return <>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <div className="col-span-1">
-                <h1 className="text-lg font-semibold">Tips</h1>
+            <div className="col-span-1 bg-white p-4 rounded-lg shadow-lg mx-5">
+                <h1 className="text-2xl font-semibold mb-4">Tips</h1>
                 {tips.map((tip) => (
-                    <article key={`tip--${tip.id}`} className="bg-gray-100 p-4 rounded-lg">
-                        <div className="flex justify-between">
-                            <h2 className="text-lg font-semibold">{tip.title}</h2>
-                            <img src={tip.image} alt="image associate with tip" className="max-h-8 rounded-lg shadow-lg" />
-                        </div>
+                    <article key={`tip--${tip.id}`} className="bg-gray-100 p-4 shadow rounded-lg">
+                        <img src={tip.image} alt="image associate with tip" className="max-h-24 m-1 rounded-lg shadow-lg" style={{ float: 'right' }} />
+                        <h2 className="text-lg font-semibold">{tip.title}</h2>
                         <div className="text-gray-600">
                             Posted on {tip.date}
                         </div>
@@ -54,9 +52,9 @@ export const UserTipsAndRecipes = () => {
                                     <div>***Not Approved***</div>
                                     <div>Reason: {tip.reasonUnapproved}</div>
                                 </div>}
-                        <div>
+                        <div className="flex">
                             <button
-                                className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+                                className="px-4 py-2 mr-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
                                 onClick={() => {
                                     navigate(`/edit-tip/${tip.id}`);
                                 }}
@@ -75,20 +73,20 @@ export const UserTipsAndRecipes = () => {
                 ))}
             </div>
 
-            <div className="col-span-1">
-                <h1 className="text-lg font-semibold">Recipes</h1>
+            <div className="col-span-1 bg-white p-4 rounded-lg shadow-lg mx-5">
+                <h1 className="text-2xl mb-4 font-semibold">Recipes</h1>
                 {recipes.map((recipe) => (
-                    <article key={`recipe--${recipe.id}`} className="bg-gray-100 p-4 rounded-lg">
-                        <div className="flex justify-between">
-                            <h2 className="text-lg font-semibold">{recipe.title}</h2>
-                            <img src={recipe.image} alt="image associate with tip" className="max-h-8 rounded-lg shadow-lg" />
-                        </div>
+                    <article key={`recipe--${recipe.id}`} className="bg-gray-100 p-4 rounded-lg shadow">
+
+                        <img src={recipe.image} alt="image associate with tip" className="max-h-24 m-1 rounded-lg shadow-lg" style={{ float: 'right' }} />
+                        <h2 className="text-lg font-semibold">{recipe.title}</h2>
                         <div className="text-gray-600">
                             Posted on {recipe.date}
                         </div>
                         <div className="text-gray-600">
                             Description: {recipe.description}
                         </div>
+
                         {recipe.needsReview ?
                             <div>***This recipe is still waiting for review.***</div>
                             : recipe.isApproved ?

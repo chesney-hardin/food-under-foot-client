@@ -74,48 +74,48 @@ export const ReviewRecipeTipForm = () => {
 
     return (
         <section className="bg-gray-100 p-4">
-            <ol className="border rounded-lg p-4">
-                <li>Review the recipe or harvest tip to make sure all information complies with our safety guidelines and sustainable harvesting principles.</li>
-                <li>If the post does not meet our guidelines, mark as "not approved" and provide a reason. The user will be given a chance to edit the information and submit for review again.</li>
-                <li>If the post does meet our guidelines, then mark as "approved" and the post will be made public and appear on the corresponding plant profile.</li>
-            </ol>
+      
             <section className="bg-white p-4 rounded-lg shadow-lg">
                 <div className="col-span-1">
                     <article
                         className="bg-gray-100 p-4 rounded-lg"
                     >
                         <div className="flex justify-between">
-                            <h2 className="text-lg font-semibold">Review "{fetchedRecipeTip.title}"</h2>
-                            <img
-                                src={fetchedRecipeTip.image}
-                                alt="image associate with fetchedRecipeTip"
-                                className="max-h-8 rounded-lg shadow-lg"
-                            />
-                        </div>
-                        {fetchedRecipeTip.isRecipe ?
-                            <div className="text-gray-600">
-                                Recipe for {fetchedRecipeTip.wild_plant?.common_name} {fetchedRecipeTip.plant_part?.label}
-                            </div> :
-                            <div className="text-gray-600">
-                                Harvest Tip for {fetchedRecipeTip.wild_plant?.common_name} {fetchedRecipeTip.plant_part?.label}
-                            </div>
-                        }
+                            <div>
+                                <h2 className="text-lg font-semibold">Review "{fetchedRecipeTip.title}"</h2>
 
-                        <div className="text-gray-600">
-                            Posted by {fetchedRecipeTip.user.first_name} {fetchedRecipeTip.user.last_name} on {fetchedRecipeTip.date}
+                            
+                            {fetchedRecipeTip.isRecipe ?
+                                <div className="text-gray-600">
+                                    Recipe for {fetchedRecipeTip.wild_plant?.common_name} {fetchedRecipeTip.plant_part?.label}
+                                </div> :
+                                <div className="text-gray-600">
+                                    Harvest Tip for {fetchedRecipeTip.wild_plant?.common_name} {fetchedRecipeTip.plant_part?.label}
+                                </div>
+                            }
+
+                            <div className="text-gray-600">
+                                Posted by {fetchedRecipeTip.user.first_name} {fetchedRecipeTip.user.last_name} on {fetchedRecipeTip.date}
+                            </div>
+                            <div className="text-gray-600">
+                                Description: {fetchedRecipeTip.description}
+                            </div>
                         </div>
-                        <div className="text-gray-600">
-                            Description: {fetchedRecipeTip.description}
+                        <img
+                            src={fetchedRecipeTip.image}
+                            alt="image associate with fetchedRecipeTip"
+                            className="max-h-24 rounded-lg shadow-lg"
+                        />
                         </div>
                     </article>
                     <button
-                        className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+                        className="px-2 py-1 mr-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
                         onClick={handleApproval}
                     >
                         Approve
                     </button>
                     <button
-                        className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+                        className="px-2 py-1 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
                         onClick={() => {
                             setShowUnapprovedForm(true)
                         }}
@@ -123,7 +123,7 @@ export const ReviewRecipeTipForm = () => {
                         Not Approved
                     </button>
                     {showUnapprovedForm ?
-                        <div className="mb-4">
+                        <div className="my-4">
                             <label className="block text-sm font-medium text-gray-700">
                                 Explain why this post cannot be approved:
                             </label>
@@ -141,7 +141,7 @@ export const ReviewRecipeTipForm = () => {
                                 }}
                             />
                             <button
-                                className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+                                className="px-2 py-1 mt-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
                                 onClick={handleRejection}
                             >
                                 Submit Review

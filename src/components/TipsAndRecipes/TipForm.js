@@ -47,7 +47,7 @@ export const TipForm = () => {
 
   return (
     <section className="bg-gray-100 p-4">
-      <ol className="border rounded-lg p-4">
+      <ol className="border-fuf-green bg-fuf-teal bg-opacity-40 border rounded-lg p-8 list-decimal mx-10 min-w-min shadow">
         <li>Add a harvest or post-harvest tip.</li>
         <li>Once submitted, your tip will be reviewed by an admin.</li>
         <li>Once reviewed and approved, your tip be made public and appear on the plant profile.</li>
@@ -55,40 +55,42 @@ export const TipForm = () => {
       <section className="bg-white p-4 rounded-lg shadow-lg">
         <h1 className="text-2xl font-semibold mb-4">Add a tip for {plant.common_name}:</h1>
         <form>
-          <div className="mb-4">
-            <label htmlFor="title" className="block text-sm font-medium text-gray-700">
-              Title:
-            </label>
-            <input
-              required
-              autoFocus
-              type="text"
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
-              placeholder="Memorable title..."
-              name="title"
-              value={newTip.title}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="plant_part">Plant Part:</label>
-            <select
-              value={newTip.plant_part}
-              required
-              name="plant_part"
-              onChange={handleChange}
-              className="form-select"
-            >
-              <option value="0">Select Edible Part</option>
-              {plantParts.map((plantPart) => (
-                <option
-                  key={`plantPart--${plantPart.id}`}
-                  value={plantPart.id}
-                >
-                  {plantPart.label}
-                </option>
-              ))}
-            </select>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div className="mb-4">
+              <label htmlFor="title" className="block text-sm font-medium text-gray-700">
+                Title:
+              </label>
+              <input
+                required
+                autoFocus
+                type="text"
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+                placeholder="Memorable title..."
+                name="title"
+                value={newTip.title}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="mb-4">
+              <label htmlFor="plant_part">Plant Part:</label>
+              <select
+                value={newTip.plant_part}
+                required
+                name="plant_part"
+                onChange={handleChange}
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+              >
+                <option value="0">Select Edible Part</option>
+                {plantParts.map((plantPart) => (
+                  <option
+                    key={`plantPart--${plantPart.id}`}
+                    value={plantPart.id}
+                  >
+                    {plantPart.label}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
           <div className="mb-4">
             <label htmlFor="description" className="block text-sm font-medium text-gray-700">

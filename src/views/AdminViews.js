@@ -13,10 +13,12 @@ import { HarvestGuidelines } from "../components/HarvestGuidelines/HarvestGuidel
 import { EdiblePlantProfile } from "../components/WildEdibles/EdiblePlantProfile"
 import { AdminReviewRecipeTipList } from "../components/TipsAndRecipes/AdminReviewRecipeTipsList"
 import { ReviewRecipeTipForm } from "../components/TipsAndRecipes/ReviewRecipeTipForm"
+import { MainLandingPage } from "../components/LandingPage/MainLandingPage"
 
 export const AdminViews = ({ token, setToken, staff, setStaff }) => {
     return <>
         <Routes>
+            <Route path="/" element={<MainLandingPage />} />
             <Route path="/login" element={<Login setToken={setToken} setStaff={setStaff}/>} />
             <Route path="/register" element={<Register setToken={setToken} setStaff={setStaff}/>} />
             <Route element={<Authorized token={token} staff={staff} />}>

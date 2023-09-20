@@ -153,7 +153,7 @@ export const AdminNewEdiblePart = ({ plant, setShowEdiblePartForm, setEdiblePart
           <div className="btn">
             <button
               onClick={handleSaveButtonClick}
-              className="px-2 py-1 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+              className="px-2 py-1 mr-1 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
             >
               Add Edible Part
             </button>

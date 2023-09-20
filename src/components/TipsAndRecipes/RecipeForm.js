@@ -47,7 +47,7 @@ export const RecipeForm = () => {
 
   return (
     <section className="bg-gray-100 p-4">
-      <ol className="border rounded-lg p-4">
+      <ol className="border-fuf-green bg-fuf-teal bg-opacity-40 border rounded-lg p-8 list-decimal mx-10 shadow">
         <li>Add a new recipe.</li>
         <li>Once submitted, your recipe will be reviewed by an admin.</li>
         <li>Once reviewed and approved, your recipe be made public and appear on the plant profile.</li>
@@ -55,7 +55,7 @@ export const RecipeForm = () => {
       <section className="bg-white p-4 rounded-lg shadow-lg">
         <h1 className="text-2xl font-semibold mb-4">Add a recipe for {plant.common_name}:</h1>
         <form>
-        <div className="grid grid-cols-1 gap-1 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-1 sm:grid-cols-2">
             <div className="mb-4">
               <label htmlFor="title" className="block text-sm font-medium text-gray-700">
                 Title:
@@ -64,14 +64,14 @@ export const RecipeForm = () => {
                 required
                 autoFocus
                 type="text"
-                className="mt-1 block min-w-min rounded-md border-gray-300 shadow-sm focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
                 placeholder="Memorable title..."
                 name="title"
                 value={newRecipe.title}
                 onChange={handleChange}
               />
             </div>
-            
+
             <div className="mb-4">
               <label htmlFor="plant_part" className="block text-sm font-medium text-gray-700">Plant Part:</label>
               <select
@@ -79,7 +79,7 @@ export const RecipeForm = () => {
                 required
                 name="plant_part"
                 onChange={handleChange}
-                className="mt-1 block min-w-min rounded-md border-gray-300 shadow-sm focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
               >
                 <option value="0">Select Edible Part</option>
                 {plantParts.map((plantPart) => (
@@ -92,21 +92,7 @@ export const RecipeForm = () => {
                 ))}
               </select>
             </div>
-            </div>
-            <div>
-              <label htmlFor="image" className="block text-sm font-medium text-gray-700">
-                Image:
-              </label>
-              <input
-                required
-                type="text"
-                className="mt-1 block w-1/2 rounded-md border-gray-300 shadow-sm focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
-                placeholder="Link to an image associated with tip..."
-                name="image"
-                value={newRecipe.image}
-                onChange={handleChange}
-              />
-            </div>
+          </div>
 
           <div className="mb-4 py-3">
             <label htmlFor="description" className="block text-sm font-medium text-gray-700">
@@ -123,6 +109,21 @@ export const RecipeForm = () => {
               Harvesting techniques, companion plants, sustainable practices, post-harvest care, etc....
             </textarea>
           </div>
+          <div>
+            <label htmlFor="image" className="block text-sm font-medium text-gray-700">
+              Image:
+            </label>
+            <input
+              required
+              type="text"
+              className="mt-1 block w-1/2 rounded-md border-gray-300 shadow-sm focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+              placeholder="Link to an image associated with tip..."
+              name="image"
+              value={newRecipe.image}
+              onChange={handleChange}
+            />
+          </div>
+
           <div className="mt-4">
             <button
               onClick={handleSaveButtonClick}
