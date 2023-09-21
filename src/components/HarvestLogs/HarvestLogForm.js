@@ -42,7 +42,11 @@ export const HarvestLogForm = () => {
   const handleSaveButtonClick = (event) => {
     event.preventDefault();
     postNewHarvestLog(newHarvestLog).then(() => {
-      navigate(`/user-harvest-logs`)
+      if(plantId) {
+      navigate(`/edible-profile/${plantId}`)
+      } else{
+        navigate(`/user-harvest-logs`)
+      }
     })
   }
 
@@ -256,7 +260,7 @@ export const HarvestLogForm = () => {
               ></textarea>
             </fieldset>
 
-            <div className="mb-4">
+            <div className="mb-4 text-end">
               <button
                 onClick={handleSaveButtonClick}
                 className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"

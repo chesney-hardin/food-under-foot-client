@@ -18,26 +18,27 @@ export const TipsAndRecipesList = ({ plantId }) => {
     return <>
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
       <div className="col-span-1">
-        <h2 className="text-lg font-semibold">Tips</h2>
+        <h2 className="text-lg font-semibold"> Harvest Tips</h2>
         <button
-          className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+          className="px-2 py-1 my-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
           onClick={() => {
             navigate(`/add-tip/${plantId}`);
           }}
         >
-          Add a Harvest Tip
+          Add a Tip
         </button>
         {approvedTips.map((tip) => (
           <article
             key={`tip--${tip.id}`}
-            className="bg-gray-100 p-4 rounded-lg"
+            className="bg-gray-100 p-4 rounded-lg shadow-lg"
           >
-            <div className="flex justify-between">
+            <div>
               <h2 className="text-lg font-semibold">{tip.title}</h2>
               <img
                 src={tip.image}
                 alt="image associate with tip"
-                className="max-h-8 rounded-lg shadow-lg"
+                className="max-h-24 m-2 rounded-lg shadow-lg"
+                style={{ float: 'right' }} 
               />
             </div>
             <div className="text-gray-600">
@@ -53,7 +54,7 @@ export const TipsAndRecipesList = ({ plantId }) => {
       <div className="col-span-1">
         <h2 className="text-lg font-semibold">Recipes</h2>
         <button
-          className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+          className="px-2 py-1 my-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
           onClick={() => {
             navigate(`/add-recipe/${plantId}`);
           }}
@@ -63,14 +64,15 @@ export const TipsAndRecipesList = ({ plantId }) => {
         {approvedRecipes.map((recipe) => (
           <article
             key={`recipe--${recipe.id}`}
-            className="bg-gray-100 p-4 rounded-lg"
+            className="bg-gray-100 p-4 rounded-lg shadow-lg"
           >
-            <div className="flex justify-between">
+            <div>
               <h2 className="text-lg font-semibold">{recipe.title}</h2>
               <img
                 src={recipe.image}
                 alt="image associate with tip"
-                className="max-h-8 rounded-lg shadow-lg"
+                className="max-h-24 m-2 rounded-lg shadow-lg"
+                style={{ float: 'right' }} 
               />
             </div>
             <div className="text-gray-600">

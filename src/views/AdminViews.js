@@ -14,6 +14,7 @@ import { EdiblePlantProfile } from "../components/WildEdibles/EdiblePlantProfile
 import { AdminReviewRecipeTipList } from "../components/TipsAndRecipes/AdminReviewRecipeTipsList"
 import { ReviewRecipeTipForm } from "../components/TipsAndRecipes/ReviewRecipeTipForm"
 import { MainLandingPage } from "../components/LandingPage/MainLandingPage"
+import { HarvestLogForm } from "../components/HarvestLogs/HarvestLogForm"
 
 export const AdminViews = ({ token, setToken, staff, setStaff }) => {
     return <>
@@ -33,6 +34,8 @@ export const AdminViews = ({ token, setToken, staff, setStaff }) => {
                 <Route path="/harvest-logs/:plantId" element={<PublicHarvestLogs />} />
                 <Route path="/tips-recipes-review/" element={<AdminReviewRecipeTipList />} />
                 <Route path="/tips-recipes-review/:recipeTipId" element={<ReviewRecipeTipForm />} />
+                <Route path="/public-harvest-logs/:plantId" element={<PublicHarvestLogs />} />
+                <Route path="/harvest-log-form/:plantId" element={<HarvestLogForm />} />
             </Route>
         </Routes>
     </>

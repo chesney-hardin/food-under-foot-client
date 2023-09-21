@@ -255,11 +255,11 @@ export const EditEdiblePart = () => {
 
   return (
     <section className="p-4">
-      <section className="bg-white p-6 rounded-lg shadow-md">
+      <section className="bg-white p-6 rounded-lg shadow-md max-w-max">
         <h1 className="text-2xl font-semibold mb-4">Edit an Edible Part</h1>
-        <form>
-          <fieldset className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
-            <div className="mb-2">
+        <form className="max-w-max">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
+            <fieldset className="mb-2">
               <label htmlFor="plant_part">Plant Part:</label>
               <select
                 value={parseInt(ediblePart.plant_part)}
@@ -283,10 +283,9 @@ export const EditEdiblePart = () => {
                   </option>
                 ))}
               </select>
-            </div>
-          </fieldset>
-          <fieldset className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
-            <div className="mb-2">
+            </fieldset>
+
+            <fieldset className="mb-2">
               <label htmlFor="usability">Use Type:</label>
               <select
                 value={ediblePart.usability}
@@ -306,10 +305,10 @@ export const EditEdiblePart = () => {
                   </option>
                 ))}
               </select>
-            </div>
-          </fieldset>
-          <fieldset>
-            <div className="mb-2">
+            </fieldset>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
+            <fieldset className="mb-2">
               <label htmlFor="">Harvest Month Start:</label>
               <select
                 value={ediblePart.harvest_start}
@@ -332,8 +331,7 @@ export const EditEdiblePart = () => {
                 <option value="11">November</option>
                 <option value="12">December</option>
               </select>
-            </div>
-          </fieldset>
+            </fieldset>
           <fieldset>
             <div className="mb-2">
               <label htmlFor="">Harvest Month End:</label>
@@ -360,6 +358,7 @@ export const EditEdiblePart = () => {
               </select>
             </div>
           </fieldset>
+          </div>
           <fieldset className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
             <div className="mb-2">
               <label>Image:</label>
@@ -382,12 +381,12 @@ export const EditEdiblePart = () => {
           <div className="space-x-2 mt-4">
             <button
               onClick={handleSaveButtonClick}
-              className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+              className="px-2 py-1 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
             >
               Save Edible Part
             </button>
             <button
-              className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+              className="px-2 py-1 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
               onClick={() => {
                 navigate(`/manage-edible-profile/${ediblePart.wild_plant}`);
               }}

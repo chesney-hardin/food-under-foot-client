@@ -80,17 +80,22 @@ export const ReviewRecipeTipForm = () => {
                     <article
                         className="bg-gray-100 p-4 rounded-lg"
                     >
-                        <div className="flex justify-between">
+                        <div className="">
                             <div>
+                            <img
+                            src={fetchedRecipeTip.image}
+                            alt="image associate with fetchedRecipeTip"
+                            className="max-h-48 m-4 rounded-lg shadow-lg"
+                            style={{ float: 'right' }} 
+                        />
                                 <h2 className="text-lg font-semibold">Review "{fetchedRecipeTip.title}"</h2>
-
-                            
+ 
                             {fetchedRecipeTip.isRecipe ?
                                 <div className="text-gray-600">
                                     Recipe for {fetchedRecipeTip.wild_plant?.common_name} {fetchedRecipeTip.plant_part?.label}
                                 </div> :
                                 <div className="text-gray-600">
-                                    Harvest Tip for {fetchedRecipeTip.wild_plant?.common_name} {fetchedRecipeTip.plant_part?.label}
+                                    Harvest tip for {fetchedRecipeTip.wild_plant?.common_name} {fetchedRecipeTip.plant_part?.label}
                                 </div>
                             }
 
@@ -101,11 +106,7 @@ export const ReviewRecipeTipForm = () => {
                                 Description: {fetchedRecipeTip.description}
                             </div>
                         </div>
-                        <img
-                            src={fetchedRecipeTip.image}
-                            alt="image associate with fetchedRecipeTip"
-                            className="max-h-24 rounded-lg shadow-lg"
-                        />
+                      
                         </div>
                     </article>
                     <button

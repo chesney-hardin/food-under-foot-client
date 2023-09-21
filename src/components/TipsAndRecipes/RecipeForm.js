@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { getPlantParts } from "../../managers/PlantPartsManager";
-import { getSinglePlant } from "../../managers/WildPlantsManager";
-import { postNewTipOrRecipe } from "../../managers/TipsAndRecipesManager";
+import React, { useEffect, useState } from "react"
+import { useNavigate, useParams } from "react-router-dom"
+import { getPlantParts } from "../../managers/PlantPartsManager"
+import { getSinglePlant } from "../../managers/WildPlantsManager"
+import { postNewTipOrRecipe } from "../../managers/TipsAndRecipesManager"
 
 export const RecipeForm = () => {
   const { plantId } = useParams()
@@ -32,18 +32,22 @@ export const RecipeForm = () => {
 
 
   const handleSaveButtonClick = (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
     postNewTipOrRecipe(newRecipe).then(() => {
-      navigate(`/user-tips-recipes`);
-    });
-  };
+      if(plantId) {
+        navigate(`/edible-profile/${plantId}`)
+        } else{
+          navigate(`/user-tips-recipes`)
+        }
+    })
+  }
 
   const handleChange = (event) => {
-    const copy = { ...newRecipe };
-    copy[event.target.name] = event.target.value;
+    const copy = { ...newRecipe }
+    copy[event.target.name] = event.target.value
     setNewRecipe(copy)
-  };
+  }
 
   return (
     <section className="bg-gray-100 p-4">
@@ -135,5 +139,5 @@ export const RecipeForm = () => {
         </form>
       </section>
     </section>
-  );
-};
+  )
+}

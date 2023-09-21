@@ -27,9 +27,9 @@ export const HarvestLogList = ({ harvestLogs, setHarvestLogs, showEditDeleteButt
                 {harvestLogs.map((harvestLog) => (
                     <section
                         key={`harvestLog--${harvestLog.id}`}
-                        className="border border-gray-300 rounded-md p-4 mb-4 flex"
+                        className=" rounded-md p-4 mb-4 flex shadow-lg"
                     >
-                        <div className="w-1/3 pr-1">
+                        <div className="w-1/3 pr-2">
                         <h3 className="text-xl font-semibold mb-2">{harvestLog.title}</h3>
                         <img
                             src={harvestLog.image}
@@ -37,7 +37,7 @@ export const HarvestLogList = ({ harvestLogs, setHarvestLogs, showEditDeleteButt
                             className="max-h-36 rounded-lg shadow-lg"
                         />
                         </div>
-                        <div className="w-2/3 pr-1">
+                        <div className="w-2/3 pl-2">
                         <div>
                             Harvested: {harvestLog.wild_plant.common_name}{" "}
                             {harvestLog.plant_part.label}

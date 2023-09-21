@@ -82,7 +82,7 @@ export const EdiblePlantProfile = () => {
                 onClick={() => {
                   navigate(`/public-harvest-logs/${plantId}`);
                 }}
-                className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+                className="px-2 py-1 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
               >
                 Public Harvest Logs
               </button>
@@ -90,7 +90,7 @@ export const EdiblePlantProfile = () => {
                 onClick={() => {
                   navigate(`/harvest-log-form/${plantId}`);
                 }}
-                className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+                className="px-2 py-1 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
               >
                 Log a Harvest
               </button>
@@ -100,7 +100,7 @@ export const EdiblePlantProfile = () => {
         </div>
       </div>
 
-      <hr className="my-4" />
+      <hr className="my-8" />
 
       <article>
         <TipsAndRecipesList plantId={plantId} />

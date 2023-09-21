@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { getPlantParts } from "../../managers/PlantPartsManager";
-import { getSinglePlant } from "../../managers/WildPlantsManager";
-import { postNewTipOrRecipe } from "../../managers/TipsAndRecipesManager";
+import React, { useEffect, useState } from "react"
+import { useNavigate, useParams } from "react-router-dom"
+import { getPlantParts } from "../../managers/PlantPartsManager"
+import { getSinglePlant } from "../../managers/WildPlantsManager"
+import { postNewTipOrRecipe } from "../../managers/TipsAndRecipesManager"
 
 export const TipForm = () => {
   const { plantId } = useParams()
@@ -19,7 +19,7 @@ export const TipForm = () => {
     isApproved: false,
     needsReview: true,
     reasonUnapproved: ""
-  });
+  })
 
   const navigate = useNavigate()
 
@@ -32,18 +32,22 @@ export const TipForm = () => {
 
 
   const handleSaveButtonClick = (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
     postNewTipOrRecipe(newTip).then(() => {
-      navigate(`/user-tips-recipes`);
-    });
-  };
+      if(plantId) {
+        navigate(`/edible-profile/${plantId}`)
+        } else{
+          navigate(`/user-tips-recipes`)
+        }
+    })
+  }
 
   const handleChange = (event) => {
-    const copy = { ...newTip };
-    copy[event.target.name] = event.target.value;
+    const copy = { ...newTip }
+    copy[event.target.name] = event.target.value
     setNewTip(copy)
-  };
+  }
 
   return (
     <section className="bg-gray-100 p-4">
@@ -134,5 +138,5 @@ export const TipForm = () => {
         </form>
       </section>
     </section>
-  );
-};
+  )
+}

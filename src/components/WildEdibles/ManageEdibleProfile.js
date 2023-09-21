@@ -89,10 +89,10 @@ export const ManageEdibleProfile = () => {
             <h1 className="text-2xl font-semibold">
               {plant.common_name.toUpperCase()} ({plant.latin_name})
             </h1>
-            <button className="px-2 py-1 mr-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+            <button className="px-2 py-1 mr-2 my-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
               onClick={() => { navigate(`/edit-edible-profile/${plantId}`) }}
             >Edit Profile</button>
-            <button className="px-2 py-1 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+            <button className="px-2 py-1 my-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
               onClick={deletePlantProfile}
             >Delete Profile</button>
             <p className="text-gray-600">{plant.latin_family}</p>

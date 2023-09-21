@@ -1,5 +1,4 @@
 
-
 import React, { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import '/Users/chesneyhardin/workspace/food-under-foot/food-under-foot-client/src/index.css';

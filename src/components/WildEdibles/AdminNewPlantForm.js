@@ -204,10 +204,10 @@ export const AdminNewPlantForm = () => {
 
   return (
     <section className="bg-gray-100 p-4">
-      <ol className="border rounded-lg p-4">
+      <ol className="border-fuf-green bg-fuf-teal bg-opacity-40 border rounded-lg p-8 shadow list-disc mx-24 my-10">
         <li>Add plant profile information.</li>
         <li>
-          Use{" "}
+          Use {
           <Link
             to="https://plants.usda.gov/home"
             target="_blank"
@@ -215,13 +215,13 @@ export const AdminNewPlantForm = () => {
             className="text-blue-500 hover:underline"
           >
             USDA plants database
-          </Link>{" "}
+          </Link>}
           to cross-reference plant information before sending to the database.
         </li>
         <li>Create profile.</li>
         <li>Add edible parts of the plant with their corresponding harvest season information.</li>
       </ol>
-      <section className="bg-white p-4 rounded-lg shadow-lg">
+      <section className="bg-white p-4 rounded-lg shadow-lg mx-5">
         <h1 className="text-2xl font-semibold mb-4">Create a New Plant Profile:</h1>
         <form>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
