@@ -1,4 +1,6 @@
-# Food Under Foot
+<img src="https://github.com/chesney-hardin/food-under-foot-client/blob/main/Copy%20of%20food%20under%20foot.png" alt="Logo" width="200" height="200"> 
+
+# Food Under Foot 
 
 ## Application Overview
 
@@ -15,14 +17,15 @@ Admin users are responsible for adding wild edibles to the database and editing 
 1. Clone this repository and change to the directory in the terminal.
 
 ```sh
-    git clone git@github.com:chesney-hardin/too-much-to-can.git
-    cd too-much-to-can
+    git clone git@github.com:chesney-hardin/food-under-foot-client.git
+    cd food-under-foot-client
 ```
 2. Access the data.
 
 ```sh
     git clone git@github.com:chesney-hardin/food-under-foot-server.git
     cd food-under-foot-server
+    pipenv shell
     python manage.py runserver
 ```
 
