@@ -17,8 +17,10 @@ export const CurrentEdiblesList = () => {
         <div>
             <div className="flex justify-center items-center m-8">
                 {usabilityTypes.map((type) => (
-                    <div className="flex">
-                        <img src={type?.icon} alt="image of use type" className="max-h-12 ml-6 mr-3 rounded-lg shadow-lg"/>  =  {type?.label}
+                    <div
+                        key={`type--${type.id}`}
+                        className="flex">
+                        <img src={type?.icon} alt="image of use type" className="max-h-12 ml-6 mr-3 rounded-lg shadow-lg" />  =  {type?.label}
                     </div>
                 ))}
             </div>

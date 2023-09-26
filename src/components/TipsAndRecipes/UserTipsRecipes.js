@@ -78,7 +78,7 @@ export const UserTipsAndRecipes = () => {
                 {recipes.map((recipe) => (
                     <article key={`recipe--${recipe.id}`} className="bg-gray-100 p-4 rounded-lg shadow">
 
-                        <img src={recipe.image} alt="image associate with tip" className="max-h-24 m-1 rounded-lg shadow-lg" style={{ float: 'right' }} />
+                        <img src={recipe.image} alt="image associate with recipe" className="max-h-24 m-1 rounded-lg shadow-lg" style={{ float: 'right' }} />
                         <h2 className="text-lg font-semibold">{recipe.title}</h2>
                         <div className="text-gray-600">
                             Posted on {recipe.date}

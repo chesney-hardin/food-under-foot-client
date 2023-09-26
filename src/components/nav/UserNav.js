@@ -67,7 +67,7 @@ export const UserNav = ({ token, setToken }) => {
                                 className="block px-4 py-2 text-gray-700 hover:bg-fuf-teal-200"
                                 to="/edibles"
                             >
-                                Wild Edibles
+                                All Wild Edibles
                             </Link>
                             <button
                                 className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-200"

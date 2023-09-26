@@ -214,9 +214,9 @@ export const AdminNewPlantForm = () => {
             rel="noopener noreferrer"
             className="text-blue-500 hover:underline"
           >
-            USDA plants database
+            USDA plants database 
           </Link>}
-          to cross-reference plant information before sending to the database.
+           to cross-reference plant information before sending to the database.
         </li>
         <li>Create profile.</li>
         <li>Add edible parts of the plant with their corresponding harvest season information.</li>
@@ -224,7 +224,7 @@ export const AdminNewPlantForm = () => {
       <section className="bg-white p-4 rounded-lg shadow-lg mx-5">
         <h1 className="text-2xl font-semibold mb-4">Create a New Plant Profile:</h1>
         <form>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 mb-4">
             <div>
               <label htmlFor="commonName" className="block text-sm font-medium text-gray-700">
                 Most Popular Common Name:
@@ -255,7 +255,7 @@ export const AdminNewPlantForm = () => {
               />
             </div>
           </div>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 mb-4">
             <div>
               <label htmlFor="alternateNames" className="block text-sm font-medium text-gray-700">
                 Other Common Names:
@@ -300,7 +300,7 @@ export const AdminNewPlantForm = () => {
               Growing conditions, companion plants, botanical description, etc....
             </textarea>
           </div>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 mb-4">
             <div>
               <label htmlFor="image" className="block text-sm font-medium text-gray-700">
                 Image:
