@@ -8,8 +8,42 @@ Here in the Southeast, we have so many wild edibles all around us! Think of blac
 For those who may not be familiar with wild edibles, this app provides a great starting point by narrowing down the list to what you can expect to find.  Users may also keep track of wild harvests and their locations. This can be extremely useful information to refer back to year after year to recall the prime (or crappy) conditions for that one awesome (or rubbish) pawpaw harvest. 
 Admin users are responsible for adding wild edibles to the database and editing them, if need be. In order to be an admin user, you must have many years of foraging experience and plant identification knowledge.
 
+## Key Features 
+### For Users
+#### Wild Edibles Information:
+<ol>
+    <li> Users can view wild edibles that are currently in season.</li>
+    <li>Users can view a wild species profile and learn about the edible parts of that species and its corresponding harvest season.</li>
+    <li>Users can search all wild edibles by common name and/or edible part (i.e. "leaf", "fruit", "nut/seed", "mushroom")</li>
+</ol>
 
+#### Harvest Logs:
+<ol>
+    <li>Users can create harvest logs with a form that collects information about the harvest (date, location, species, quantity, description, etc.) Users can elect whether to make the log public or private.</li>
+    <li>Users can view public harvest logs for each species with an integrated map view.</li>
+    <li>Users can view, edit, and delete their own harvest logs.</li>
+</ol>
 
+#### Recipes and Harvest Tips:
+<ol>
+    <li>On each species, profile, users can view approved recipes and harevst tips posted by other users.</li>
+    <li>Users can post a recipe or harvest tip for a specific species. Once approved by an admin, it will be made public.</li>
+    <li>Users can view, edit, and delete recipes and harvest tips they have posted. They can also view the status of approval for each post.</li>
+</ol>
+
+### For Administrators:
+#### Wild Edibles Information:
+<ol>
+    <li>Admin users can add new wild edibles to the database.</li>
+    <li>Admin users can edit and delete wild edible profiles and their edible parts.</li>
+</ol>
+
+#### Recipes and Harvest Tips:
+<ol>
+    <li>Admin users can review recipes and harvest tips posted by users.</li>
+    <li>Admin users can approve the recipes and tips. Once approved, they will be made public.</li>
+    <li>Amdin users can unapprove of a recipe or tip if it is not in line with FUF's sustainable harvesting and safety guidelines. If an admin unapproves, then they are required to post the reason.</li>
+</ol>
 
 ## Running This Application
 
