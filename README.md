@@ -48,11 +48,13 @@ Admin users are responsible for adding wild edibles to the database and editing 
 ## Running This Application
 
 
-1. Clone this repository and change to the directory in the terminal.
+1. Clone this repository, change to the directory, and launch the client.
 
 ```sh
     git clone git@github.com:chesney-hardin/food-under-foot-client.git
     cd food-under-foot-client
+    npm install
+    npm start
 ```
 2. Access the data.
 
@@ -63,12 +65,6 @@ Admin users are responsible for adding wild edibles to the database and editing 
     python manage.py runserver
 ```
 
-3. Launch the client.
-
-```sh
-    npm install
-    npm start
-```
 
 #### Demo User Credentials
 
