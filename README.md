@@ -56,12 +56,14 @@ Admin users are responsible for adding wild edibles to the database and editing 
     npm install
     npm start
 ```
-2. Access the data.
+2. Access the data, start a virtual environment, "seed" the database, and run the server.
 
 ```sh
     git clone git@github.com:chesney-hardin/food-under-foot-server.git
     cd food-under-foot-server
     pipenv shell
+    pipenv install
+    ./seed_database.sh
     python manage.py runserver
 ```
 
