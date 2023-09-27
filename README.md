@@ -74,9 +74,12 @@ Admin users are responsible for adding wild edibles to the database and editing 
     git clone git@github.com:chesney-hardin/food-under-foot-client.git
     cd food-under-foot-client
 ```
-2. Launch the client.
+2. Install dependencies.
 ```sh
     npm install
+```
+3. Launch client.
+```sh
     npm start
 ```
 
