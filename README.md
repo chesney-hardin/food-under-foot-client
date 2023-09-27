@@ -46,27 +46,39 @@ Admin users are responsible for adding wild edibles to the database and editing 
 </ol>
 
 ## Running This Application
-
-
-1. Clone this repository, change to the directory, and launch the client.
-
-```sh
-    git clone git@github.com:chesney-hardin/food-under-foot-client.git
-    cd food-under-foot-client
-    npm install
-    npm start
-```
-2. Access the data, start a virtual environment, "seed" the database, and run the server.
-
+### Serverside
+1. Clone the repository for the server and move to that directory:
 ```sh
     git clone git@github.com:chesney-hardin/food-under-foot-server.git
     cd food-under-foot-server
+```
+2. Initialize virtual environment:
+```sh
     pipenv shell
+```
+3. Install pipenv:
+ ```sh
     pipenv install
+```
+4. Seed database with initial fixtures:
+ ```sh
     ./seed_database.sh
+```
+5. Run the server:
+```sh
     python manage.py runserver
 ```
-
+### Clientside
+1. Clone this repository and change to the directory.
+```sh
+    git clone git@github.com:chesney-hardin/food-under-foot-client.git
+    cd food-under-foot-client
+```
+2. Launch the client.
+```sh
+    npm install
+    npm start
+```
 
 #### Demo User Credentials
 
