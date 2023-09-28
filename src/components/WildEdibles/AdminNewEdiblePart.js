@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { getUsabilityTypes } from "../../managers/UsabilityTypesManager";
-import { getEdiblePartsOfAPlant } from "../../managers/EdiblePartsManager";
-import { getPlantParts, postNewEdiblePart } from "../../managers/PlantPartsManager";
+import React, { useEffect, useState } from "react"
+import { getUsabilityTypes } from "../../managers/UsabilityTypesManager"
+import { getEdiblePartsOfAPlant } from "../../managers/EdiblePartsManager"
+import { getPlantParts, postNewEdiblePart } from "../../managers/PlantPartsManager"
 
 export const AdminNewEdiblePart = ({ plant, setShowEdiblePartForm, setEdibleParts }) => {
-  const [usabilityTypes, setUsabilityTypes] = useState([]);
-  const [plantParts, setPlantParts] = useState([]);
+  const [usabilityTypes, setUsabilityTypes] = useState([])
+  const [plantParts, setPlantParts] = useState([])
   const [newEdiblePart, setNewEdiblePart] = useState({
     wild_plant: plant.id,
     plant_part: 0,
@@ -13,26 +13,26 @@ export const AdminNewEdiblePart = ({ plant, setShowEdiblePartForm, setEdiblePart
     harvest_start: "",
     harvest_end: "",
     image: "",
-  });
+  })
 
   useEffect(() => {
-    getUsabilityTypes().then((types) => setUsabilityTypes(types));
-    getPlantParts().then((parts) => setPlantParts(parts));
+    getUsabilityTypes().then((types) => setUsabilityTypes(types))
+    getPlantParts().then((parts) => setPlantParts(parts))
   }, [])
 
   const handleSaveButtonClick = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     postNewEdiblePart(newEdiblePart).then(() => {
-      setShowEdiblePartForm(false);
-      getEdiblePartsOfAPlant(plant.id).then((plantData) => setEdibleParts(plantData));
-    });
-  };
+      setShowEdiblePartForm(false)
+      getEdiblePartsOfAPlant(plant.id).then((plantData) => setEdibleParts(plantData))
+    })
+  }
 
   const handleChange = (event) => {
-    const copy = { ...newEdiblePart };
-    copy[event.target.name] = event.target.value;
-    setNewEdiblePart(copy);
-  };
+    const copy = { ...newEdiblePart }
+    copy[event.target.name] = event.target.value
+    setNewEdiblePart(copy)
+  }
 
   return (
     <section className="bg-gray-100">
@@ -153,14 +153,14 @@ export const AdminNewEdiblePart = ({ plant, setShowEdiblePartForm, setEdiblePart
           <div className="btn">
             <button
               onClick={handleSaveButtonClick}
-              className="px-2 py-1 mr-1 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+              className="mr-1 btn"
             >
               Add Edible Part
             </button>
             <button
-              className="px-2 py-1 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+              className="btn"
               onClick={() => {
-                setShowEdiblePartForm(false);
+                setShowEdiblePartForm(false)
               }}
             >
               Cancel
@@ -169,6 +169,6 @@ export const AdminNewEdiblePart = ({ plant, setShowEdiblePartForm, setEdiblePart
         </form>
       </section>
     </section>
-  );
-};
+  )
+}
 

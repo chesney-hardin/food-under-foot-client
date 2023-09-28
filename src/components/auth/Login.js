@@ -1,40 +1,40 @@
-import React, { useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { loginUser } from "../../managers/AuthManager";
+import React, { useRef, useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import { loginUser } from "../../managers/AuthManager"
 
 export const Login = ({ setToken, setStaff }) => {
-  const email = useRef();
-  const password = useRef();
-  const [isUnsuccessful, setIsUnsuccessful] = useState(false);
-  const navigate = useNavigate();
+  const email = useRef()
+  const password = useRef()
+  const [isUnsuccessful, setIsUnsuccessful] = useState(false)
+  const navigate = useNavigate()
 
   const handleLogin = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     const user = {
       email: email.current.value,
       password: password.current.value,
-    };
+    }
     loginUser(user)
       .then((res) => {
         if ("valid" in res && res.valid && "token" in res) {
-          setToken(res.token);
-          setStaff(res.staff);
-          navigate("/home");
+          setToken(res.token)
+          setStaff(res.staff)
+          navigate("/home")
           setTimeout(() => {
             if (res.staff) {
-              window.alert("Hello admin user");
+              window.alert("Hello admin user. Remember to check on harvest tips and recipes ready for review.")
             } else {
               window.alert(
                 "NEW USERS!!!\nIf you're new to foraging wild edibles, please take a moment to review the harvest guidelines and safety tips."
-              );
+              )
             }
-          }, 100);
+          }, 100)
         } else {
-          setIsUnsuccessful(true);
+          setIsUnsuccessful(true)
         }
-      });
-  };
+      })
+  }
 
   return (
     <main className="bg-white min-h-full flex items-center justify-center">
@@ -93,5 +93,5 @@ export const Login = ({ setToken, setStaff }) => {
         </section>
       )}
     </main>
-  );
-};
+  )
+}

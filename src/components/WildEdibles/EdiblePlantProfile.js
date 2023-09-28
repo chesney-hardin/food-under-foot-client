@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { getSinglePlant } from "../../managers/WildPlantsManager";
-import { getEdiblePartsOfAPlant } from "../../managers/EdiblePartsManager";
-import { TipsAndRecipesList } from "../TipsAndRecipes/TipsAndRecipesList";
+import React, { useEffect, useState } from "react"
+import { useNavigate, useParams } from "react-router-dom"
+import { getSinglePlant } from "../../managers/WildPlantsManager"
+import { getEdiblePartsOfAPlant, convertHarvestMonth } from "../../managers/EdiblePartsManager"
+import { TipsAndRecipesList } from "../TipsAndRecipes/TipsAndRecipesList"
 
-export const EdiblePlantProfile = () => {
-  const { plantId } = useParams();
-  const navigate = useNavigate();
+export const EdiblePlantProfile = ({ staff }) => {
+  // using props, but could get staff value from local storage to avoid prop drilling
+  //const staff = localStorage.getItem('staff')
+  const { plantId } = useParams()
+  const navigate = useNavigate()
   const [plant, setPlant] = useState({
     id: 0,
     common_name: "",
@@ -22,16 +24,10 @@ export const EdiblePlantProfile = () => {
   const [edibleParts, setEdibleParts] = useState([])
 
   useEffect(() => {
-    getSinglePlant(plantId).then((plantData) => setPlant(plantData));
-    getEdiblePartsOfAPlant(plantId).then((plantData) => setEdibleParts(plantData));
-  }, []);
+    getSinglePlant(plantId).then((plantData) => setPlant(plantData))
+    getEdiblePartsOfAPlant(plantId).then((plantData) => setEdibleParts(plantData))
+  }, [])
 
-  const convertHarvestMonth = (monthData) => {
-    const monthNumber = parseInt(monthData, 10);
-    const date = new Date(`2023-${monthNumber}-01`)
-    const monthName = date.toLocaleString("default", { month: "long" })
-    return monthName
-  };
 
   return (
     <section className="bg-white p-4 rounded-lg shadow-lg">
@@ -47,7 +43,7 @@ export const EdiblePlantProfile = () => {
                 <div className="text-gray-600">
                   {convertHarvestMonth(part.harvest_start)} - {convertHarvestMonth(part.harvest_end)}
                 </div>
-                <img src={part.image} alt="image of edible part" className="max-h-24 mx-auto rounded-lg shadow-lg" />
+                <img src={part.image} alt="edible part" className="max-h-24 mx-auto rounded-lg shadow-lg" />
               </article>
             ))}
           </div>
@@ -78,23 +74,25 @@ export const EdiblePlantProfile = () => {
               className="w-full rounded-lg shadow-lg"
             />
             <div className="space-y-4 mt-4">
-            <button
+              <button
                 onClick={() => {
-                  navigate(`/public-harvest-logs/${plantId}`);
+                  navigate(`/public-harvest-logs/${plantId}`)
                 }}
-                className="px-2 py-1 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+                className="btn"
               >
                 Public Harvest Logs
               </button>
-              <button
-                onClick={() => {
-                  navigate(`/harvest-log-form/${plantId}`);
-                }}
-                className="px-2 py-1 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
-              >
-                Log a Harvest
-              </button>
-          
+              {!staff &&
+                <button
+                  onClick={() => {
+                    navigate(`/harvest-log-form/${plantId}`)
+                  }}
+                  className="btn"
+                >
+                  Log a Harvest
+                </button>
+              }
+
             </div>
           </div>
         </div>
@@ -103,7 +101,7 @@ export const EdiblePlantProfile = () => {
       <hr className="my-8" />
 
       <article>
-        <TipsAndRecipesList plantId={plantId} />
+        <TipsAndRecipesList plantId={plantId} staff={staff} />
       </article>
     </section>
 

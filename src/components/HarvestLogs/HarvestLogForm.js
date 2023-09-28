@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { getSinglePlant, getWildPlants } from "../../managers/WildPlantsManager";
-import { getPlantParts } from "../../managers/PlantPartsManager";
-import { postNewHarvestLog } from "../../managers/HarvestLogsManager";
-import { SelectCoordinatesMap } from "./SelectCoordinatesMap";
+import { useEffect, useState } from "react"
+import { useNavigate, useParams } from "react-router-dom"
+import { getSinglePlant, getWildPlants } from "../../managers/WildPlantsManager"
+import { getPlantParts } from "../../managers/PlantPartsManager"
+import { postNewHarvestLog } from "../../managers/HarvestLogsManager"
+import { SelectCoordinatesMap } from "./SelectCoordinatesMap"
 
 export const HarvestLogForm = () => {
   const { plantId } = useParams()
@@ -40,7 +40,7 @@ export const HarvestLogForm = () => {
   }, [plantId])
 
   const handleSaveButtonClick = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     postNewHarvestLog(newHarvestLog).then(() => {
       if(plantId) {
       navigate(`/edible-profile/${plantId}`)
@@ -102,9 +102,9 @@ export const HarvestLogForm = () => {
                 required
                 name="isPublicLocation"
                 onChange={(event) => {
-                  const copy = { ...newHarvestLog };
-                  copy.isPublicLocation = JSON.parse(event.target.value);
-                  setNewHarvestLog(copy);
+                  const copy = { ...newHarvestLog }
+                  copy.isPublicLocation = JSON.parse(event.target.value)
+                  setNewHarvestLog(copy)
                 }}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
               >
@@ -140,9 +140,9 @@ export const HarvestLogForm = () => {
                 required
                 name="wild_plant"
                 onChange={(event) => {
-                  const copy = { ...newHarvestLog };
-                  copy.wild_plant = parseInt(event.target.value);
-                  setNewHarvestLog(copy);
+                  const copy = { ...newHarvestLog }
+                  copy.wild_plant = parseInt(event.target.value)
+                  setNewHarvestLog(copy)
                 }}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
               >
@@ -164,9 +164,9 @@ export const HarvestLogForm = () => {
                 required
                 name="plant_part"
                 onChange={(event) => {
-                  const copy = { ...newHarvestLog };
-                  copy.plant_part = parseInt(event.target.value);
-                  setNewHarvestLog(copy);
+                  const copy = { ...newHarvestLog }
+                  copy.plant_part = parseInt(event.target.value)
+                  setNewHarvestLog(copy)
                 }}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
               >
@@ -219,9 +219,9 @@ export const HarvestLogForm = () => {
                 required
                 name="isPublic"
                 onChange={(event) => {
-                  const copy = { ...newHarvestLog };
-                  copy.isPublic = JSON.parse(event.target.value);
-                  setNewHarvestLog(copy);
+                  const copy = { ...newHarvestLog }
+                  copy.isPublic = JSON.parse(event.target.value)
+                  setNewHarvestLog(copy)
                 }}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
               >
@@ -263,7 +263,7 @@ export const HarvestLogForm = () => {
             <div className="mb-4 text-end">
               <button
                 onClick={handleSaveButtonClick}
-                className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+                className="btn"
               >
                 Create Harvest Log
               </button>
@@ -272,5 +272,5 @@ export const HarvestLogForm = () => {
         </form>
       </section>
     </section>
-  );
-};
+  )
+}

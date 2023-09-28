@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { getPlantParts } from "../../managers/PlantPartsManager";
-import { getTipsOrRecipesById, updateTipOrRecipe } from "../../managers/TipsAndRecipesManager";
+import React, { useEffect, useState } from "react"
+import { useNavigate, useParams } from "react-router-dom"
+import { getPlantParts } from "../../managers/PlantPartsManager"
+import { getTipsOrRecipesById, updateTipOrRecipe } from "../../managers/TipsAndRecipesManager"
 
 export const TipEditForm = () => {
   const { tipId } = useParams()
   const [plantParts, setPlantParts] = useState([])
-  const [plant, setPlant] = useState({})
   const [fetchedTip, setFetchedTip] = useState({})
   const [tip, setTip] = useState({
+    wild_plant: 0,
     plant_part: 0,
     title: "",
     description: "",
     image: ""
-  });
+  })
 
   const navigate = useNavigate()
 
   useEffect(() => {
-    getPlantParts().then((parts) => setPlantParts(parts));
+    getPlantParts().then((parts) => setPlantParts(parts))
   }, [])
 
   useEffect(() => {
@@ -48,28 +48,28 @@ export const TipEditForm = () => {
 
 
   const handleSaveButtonClick = (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
     updateTipOrRecipe(tipId, tip).then(() => {
-      navigate(`/user-tips-recipes`);
+      navigate(`/user-tips-recipes`)
     })
   }
 
   const handleChange = (event) => {
-    const copy = { ...tip };
-    copy[event.target.name] = event.target.value;
+    const copy = { ...tip }
+    copy[event.target.name] = event.target.value
     setTip(copy)
-  };
+  }
 
   return (
     <section className="bg-gray-100 p-4">
-      <ol className="border rounded-lg p-4">
+      <ol className="border-fuf-green bg-fuf-teal bg-opacity-40 border rounded-lg p-8 shadow list-disc mx-24 my-10">
         <li>Edit your harvest or post-harvest tip.</li>
         <li>Once submitted, your tip will need to be reviewed by an admin again.</li>
-        <li>Once reviewed and approved, your tip be made public and appear on the plant profile.</li>
+        <li>Once reviewed and approved, your tip will be made public and appear on the plant profile.</li>
       </ol>
       <section className="bg-white p-4 rounded-lg shadow-lg">
-        <h1 className="text-2xl font-semibold mb-4">Add a tip for {plant.common_name}:</h1>
+        <h1 className="text-2xl font-semibold mb-4">Edit tip for {fetchedTip?.wild_plant?.common_name}</h1>
         <form>
           <div className="mb-4">
             <label htmlFor="title" className="block text-sm font-medium text-gray-700">
@@ -140,7 +140,7 @@ export const TipEditForm = () => {
           <div className="mt-4">
             <button
               onClick={handleSaveButtonClick}
-              className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+              className="btn"
             >
               Submit
             </button>

@@ -9,7 +9,7 @@ export const WildEdiblesSearch = ({ setSearchState }) => {
     })
 
     useEffect(() => {
-        getPlantParts().then((parts) => setPlantParts(parts));
+        getPlantParts().then((parts) => setPlantParts(parts))
     }, [])
 
 
@@ -20,7 +20,7 @@ export const WildEdiblesSearch = ({ setSearchState }) => {
             onChange={(event) => {
                 const copy = { ...search }
                 copy.name = event.target.value
-                setSearch(copy);
+                setSearch(copy)
             }}
             type="text" placeholder="Search common names" />
 
@@ -29,7 +29,7 @@ export const WildEdiblesSearch = ({ setSearchState }) => {
                 value={search.partId}
                 name="partId"
                 onChange={(event) => {
-                    const copy = { ...search };
+                    const copy = { ...search }
                     copy.partId = parseInt(event.target.value)
                     setSearch(copy)
                 }}
@@ -47,7 +47,7 @@ export const WildEdiblesSearch = ({ setSearchState }) => {
             </select>
         </div>
 
-        <button className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+        <button className="btn"
             onClick={() => { setSearchState(search) }}>Search</button>
     </>
 }

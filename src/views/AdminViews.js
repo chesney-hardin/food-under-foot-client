@@ -25,10 +25,10 @@ export const AdminViews = ({ token, setToken, staff, setStaff }) => {
             <Route element={<Authorized token={token} staff={staff} />}>
                 <Route path="/home" element={<AdminHome token={token} />} />
                 <Route path="/harvest-guidelines" element={<HarvestGuidelines />} />
-                <Route path="/edible-profile/:plantId" element={<EdiblePlantProfile />} />
-                <Route path="/manage-edibles" element={<ManageWildPlants token={token} />} />
-                <Route path="/manage-edible-profile/:plantId" element={<ManageEdibleProfile token={token} />} />
-                <Route path="/new-plant-form" element={<AdminNewPlantForm token={token} />} />
+                <Route path="/edible-profile/:plantId" element={<EdiblePlantProfile staff={staff}/>} />
+                <Route path="/manage-edibles" element={<ManageWildPlants />} />
+                <Route path="/manage-edible-profile/:plantId" element={<ManageEdibleProfile staff={staff}/>} />
+                <Route path="/new-plant-form" element={<AdminNewPlantForm/>} />
                 <Route path="/edit-edible-profile/:plantId" element={<EditEdibleProfileForm />} />
                 <Route path="/edit-edible-part/:partId" element={<EditEdiblePart />} />
                 <Route path="/harvest-logs/:plantId" element={<PublicHarvestLogs />} />

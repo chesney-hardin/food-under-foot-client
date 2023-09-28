@@ -72,7 +72,7 @@ export const HarvestLogList = ({ harvestLogs, setHarvestLogs, showEditDeleteButt
                         {showEditDeleteButtons ?
                             <div>
                                 <button
-                                    className="px-4 py-2 m-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+                                    className="btn mb-2"
                                     onClick={() => {
                                         navigate(`/edit-harvest-log/${harvestLog.id}`);
                                     }}
@@ -80,7 +80,7 @@ export const HarvestLogList = ({ harvestLogs, setHarvestLogs, showEditDeleteButt
                                     Edit
                                 </button>
                                 <button
-                                    className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+                                    className="btn"
                                     onClick={() => {
                                         deleteLog(harvestLog.id);
                                     }}

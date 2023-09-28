@@ -36,7 +36,7 @@ export const UserTipsAndRecipes = () => {
                 <h1 className="text-2xl font-semibold mb-4">Tips</h1>
                 {tips.map((tip) => (
                     <article key={`tip--${tip.id}`} className="bg-gray-100 p-4 shadow rounded-lg">
-                        <img src={tip.image} alt="image associate with tip" className="max-h-24 m-1 rounded-lg shadow-lg" style={{ float: 'right' }} />
+                        <img src={tip.image} alt="harvest tip" className="max-h-24 m-1 rounded-lg shadow-lg" style={{ float: 'right' }} />
                         <h2 className="text-lg font-semibold">{tip.title}</h2>
                         <div className="text-gray-600">
                             Posted on {tip.date}
@@ -54,7 +54,7 @@ export const UserTipsAndRecipes = () => {
                                 </div>}
                         <div className="flex">
                             <button
-                                className="px-4 py-2 mr-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+                                className="mr-2 btn"
                                 onClick={() => {
                                     navigate(`/edit-tip/${tip.id}`);
                                 }}
@@ -62,7 +62,7 @@ export const UserTipsAndRecipes = () => {
                                 Edit
                             </button>
                             <button
-                                className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+                                className="btn"
                                 onClick={() => {
                                     destroyTipOrRecipe(tip.id)
                                 }}
@@ -78,7 +78,7 @@ export const UserTipsAndRecipes = () => {
                 {recipes.map((recipe) => (
                     <article key={`recipe--${recipe.id}`} className="bg-gray-100 p-4 rounded-lg shadow">
 
-                        <img src={recipe.image} alt="image associate with recipe" className="max-h-24 m-1 rounded-lg shadow-lg" style={{ float: 'right' }} />
+                        <img src={recipe.image} alt="recipe" className="max-h-24 m-1 rounded-lg shadow-lg" style={{ float: 'right' }} />
                         <h2 className="text-lg font-semibold">{recipe.title}</h2>
                         <div className="text-gray-600">
                             Posted on {recipe.date}
@@ -98,7 +98,7 @@ export const UserTipsAndRecipes = () => {
 
                         <div>
                             <button
-                                className="px-4 py-2 mr-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+                                className="mr-2 btn"
                                 onClick={() => {
                                     navigate(`/edit-recipe/${recipe.id}`);
                                 }}
@@ -106,7 +106,7 @@ export const UserTipsAndRecipes = () => {
                                 Edit
                             </button>
                             <button
-                                className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+                                className="btn"
                                 onClick={() => {
                                     destroyTipOrRecipe(recipe.id)
                                 }}

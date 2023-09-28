@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { getWildPlants } from "../../managers/WildPlantsManager";
-import { getPlantParts } from "../../managers/PlantPartsManager";
-import { getHarvestLogById, updateHarvestLog } from "../../managers/HarvestLogsManager";
+import { useEffect, useState } from "react"
+import { useNavigate, useParams } from "react-router-dom"
+import { getWildPlants } from "../../managers/WildPlantsManager"
+import { getPlantParts } from "../../managers/PlantPartsManager"
+import { getHarvestLogById, updateHarvestLog } from "../../managers/HarvestLogsManager"
 
 export const HarvestLogEditForm = () => {
-    const { harvestLogId } = useParams();
-    const [plantParts, setPlantParts] = useState([]);
-    const [plants, setPlants] = useState([]);
-    const [fetchedLog, setFetchedLog] = useState({});
+    const { harvestLogId } = useParams()
+    const [plantParts, setPlantParts] = useState([])
+    const [plants, setPlants] = useState([])
+    const [fetchedLog, setFetchedLog] = useState({})
     const [harvestLog, setHarvestLog] = useState({
         wild_plant: 0,
         plant_part: 0,
@@ -21,15 +21,15 @@ export const HarvestLogEditForm = () => {
         description: "",
         image: "",
         isPublic: 0,
-    });
+    })
 
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (harvestLogId) {
-            getHarvestLogById(harvestLogId).then((logData) => setFetchedLog(logData));
+            getHarvestLogById(harvestLogId).then((logData) => setFetchedLog(logData))
         }
-    }, [harvestLogId]);
+    }, [harvestLogId])
 
     useEffect(() => {
         if (fetchedLog.id) {
@@ -47,27 +47,27 @@ export const HarvestLogEditForm = () => {
                 description: fetchedLog.description,
                 image: fetchedLog.image,
                 isPublic: fetchedLog.isPublic,
-            });
+            })
         }
-    }, [fetchedLog]);
+    }, [fetchedLog])
 
     useEffect(() => {
-        getWildPlants().then((plantData) => setPlants(plantData));
-        getPlantParts().then((parts) => setPlantParts(parts));
-    }, []);
+        getWildPlants().then((plantData) => setPlants(plantData))
+        getPlantParts().then((parts) => setPlantParts(parts))
+    }, [])
 
     const handleSaveButtonClick = (event) => {
-        event.preventDefault();
+        event.preventDefault()
         updateHarvestLog(harvestLogId, harvestLog).then(() => {
-            navigate(`/user-harvest-logs`);
-        });
-    };
+            navigate(`/user-harvest-logs`)
+        })
+    }
 
     const handleChange = (event) => {
-        const copy = { ...harvestLog };
-        copy[event.target.name] = event.target.value;
-        setHarvestLog(copy);
-    };
+        const copy = { ...harvestLog }
+        copy[event.target.name] = event.target.value
+        setHarvestLog(copy)
+    }
 
     return (
         <section className="p-6">
@@ -101,9 +101,9 @@ export const HarvestLogEditForm = () => {
                             className="form-select w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring focus:border-fuf-teal"
                             name="wild_plant"
                             onChange={(event) => {
-                                const copy = { ...harvestLog };
-                                copy.wild_plant = parseInt(event.target.value);
-                                setHarvestLog(copy);
+                                const copy = { ...harvestLog }
+                                copy.wild_plant = parseInt(event.target.value)
+                                setHarvestLog(copy)
                             }}
                         >
                             <option value="0">Select Wild Edible</option>
@@ -129,9 +129,9 @@ export const HarvestLogEditForm = () => {
                             className="form-select w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring focus:border-fuf-teal"
                             name="plant_part"
                             onChange={(event) => {
-                                const copy = { ...harvestLog };
-                                copy.plant_part = parseInt(event.target.value);
-                                setHarvestLog(copy);
+                                const copy = { ...harvestLog }
+                                copy.plant_part = parseInt(event.target.value)
+                                setHarvestLog(copy)
                             }}
                         >
                             <option value="0">Select Edible Part</option>
@@ -224,9 +224,9 @@ export const HarvestLogEditForm = () => {
                             className="form-select w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring focus:border-fuf-teal"
                             name="isPublicLocation"
                             onChange={(event) => {
-                                const copy = { ...harvestLog };
-                                copy.isPublicLocation = JSON.parse(event.target.value);
-                                setHarvestLog(copy);
+                                const copy = { ...harvestLog }
+                                copy.isPublicLocation = JSON.parse(event.target.value)
+                                setHarvestLog(copy)
                             }}
                         >
                             <option value="0">Select</option>
@@ -244,9 +244,9 @@ export const HarvestLogEditForm = () => {
                             className="form-select w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring focus:border-fuf-teal"
                             name="isPublic"
                             onChange={(event) => {
-                                const copy = { ...harvestLog };
-                                copy.isPublic = JSON.parse(event.target.value);
-                                setHarvestLog(copy);
+                                const copy = { ...harvestLog }
+                                copy.isPublic = JSON.parse(event.target.value)
+                                setHarvestLog(copy)
                             }}
                         >
                             <option value="0">Select</option>
@@ -285,12 +285,11 @@ export const HarvestLogEditForm = () => {
                             onChange={handleChange}
                         ></textarea>
                     </fieldset>
-               
 
                     <div className="text-end">
                         <button
                             onClick={handleSaveButtonClick}
-                            className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+                            className="btn"
                         >
                             Save Changes
                         </button>
@@ -298,5 +297,5 @@ export const HarvestLogEditForm = () => {
                 </form>
             </section>
         </section>
-    );
-};
+    )
+}

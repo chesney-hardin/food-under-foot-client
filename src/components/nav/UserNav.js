@@ -1,21 +1,22 @@
-import { Link, useNavigate } from "react-router-dom";
-import Logo from "./logo-fuf.png";
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom"
+import Logo from "./logo-fuf.png"
+import { useState } from "react"
 
 export const UserNav = ({ token, setToken }) => {
-    const navigate = useNavigate();
+    const navigate = useNavigate()
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
 
     const toggleDropdown = () => {
-        setIsDropdownOpen(!isDropdownOpen);
-    };
+        setIsDropdownOpen(!isDropdownOpen)
+    }
 
     const handleLogout = () => {
-        setToken("");
+        setIsDropdownOpen(false)
+        setToken("")
         localStorage.removeItem("staff")
-        navigate("/login");
-    };
+        navigate("/login")
+    }
 
     return (
         <nav className="bg-white py-4 px-6">
@@ -32,7 +33,7 @@ export const UserNav = ({ token, setToken }) => {
                             onClick={toggleDropdown}
                             className="text-gray group-hover:bg-fuf-green px-3 py-2 rounded-md hover:bg-fuf-green focus:outline-none"
                         >
-                            <span className="text-5xl">&#8801;</span>
+                            <span className="text-5xl">&#8801</span>
                         </button>
                     )}
                     {token && isDropdownOpen ? (
@@ -82,5 +83,5 @@ export const UserNav = ({ token, setToken }) => {
                 </div>
             </div>
         </nav>
-    );
-}; 
+    )
+} 

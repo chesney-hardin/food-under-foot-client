@@ -1,19 +1,20 @@
-import React, { useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { registerUser } from "../../managers/AuthManager";
+// useRef provides a way to create and manage a reference to a DOM element without causing re-renders
+import React, { useRef } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import { registerUser } from "../../managers/AuthManager"
 
 export const Register = () => {
-  const firstName = useRef();
-  const lastName = useRef();
-  const email = useRef();
-  const accountType = useRef();
-  const password = useRef();
-  const verifyPassword = useRef();
-  const passwordDialog = useRef();
-  const navigate = useNavigate();
+  const firstName = useRef()
+  const lastName = useRef()
+  const email = useRef()
+  const accountType = useRef()
+  const password = useRef()
+  const verifyPassword = useRef()
+  const passwordDialog = useRef()
+  const navigate = useNavigate()
 
   const handleRegister = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     if (password.current.value === verifyPassword.current.value) {
       const newUser = {
@@ -22,18 +23,18 @@ export const Register = () => {
         last_name: lastName.current.value,
         account_type: accountType.current.value,
         password: password.current.value,
-      };
+      }
 
       registerUser(newUser).then((res) => {
         if ("token" in res) {
-          localStorage.setItem("fuf_token", res.token);
-          navigate("/");
+          localStorage.setItem("fuf_token", res.token)
+          navigate("/")
         }
-      });
+      })
     } else {
-      passwordDialog.current.showModal();
+      passwordDialog.current.showModal()
     }
-  };
+  }
 
   return (
     <main className="bg-white min-h-screen flex items-center justify-center">
@@ -142,5 +143,5 @@ export const Register = () => {
       </div>
       </form>
     </main>
-  );
-};
+  )
+}

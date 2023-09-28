@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { getPlantsByCommonName, getPlantsByEdiblePart, getPlantsByNameAndPart, getWildPlants } from "../../managers/WildPlantsManager";
-import { useNavigate } from "react-router-dom";
-import { WildEdiblesSearch } from "./WildEdiblesSearch";
+import { useEffect, useState } from "react"
+import { getPlantsByCommonName, getPlantsByEdiblePart, getPlantsByNameAndPart, getWildPlants } from "../../managers/WildPlantsManager"
+import { useNavigate } from "react-router-dom"
+import { WildEdiblesSearch } from "./WildEdiblesSearch"
 
 export const WildEdiblesList = () => {
     const [edibles, setEdibles] = useState([])
@@ -45,7 +45,7 @@ export const WildEdiblesList = () => {
                     </h1>
                     <WildEdiblesSearch setSearchState={setSearchState} />
                         <button
-                            className="px-4 py-2 ml-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50 mt-4"
+                            className="ml-2 mt-4 btn"
                             onClick={showAllEdibles}
                         >
                             Show All
@@ -55,17 +55,19 @@ export const WildEdiblesList = () => {
 
             <div className="w-2/3 p-4">
                 <div className="mx-auto">
-                    {edibles.map((plant) => (
+                    {edibles.length === 0 ?
+                        <div>*** No wild edibles meet the search criteria ***</div> :  
+                    edibles.map((plant) => (
                         <section
                             key={`plant--${plant.id}`}
                             className="bg-white p-4 rounded-lg shadow-md mt-4 my-2 cursor-pointer"
                             onClick={() => {
-                                navigate(`/edible-profile/${plant?.id}`);
+                                navigate(`/edible-profile/${plant?.id}`)
                             }}
                         >
                             <img
                                 src={plant?.image}
-                                alt="image of edible plant"
+                                alt="edible plant"
                                 className="max-h-48 w-full rounded-lg shadow-lg"
                                 style={{ objectFit: "cover" }}
                             />
@@ -83,4 +85,4 @@ export const WildEdiblesList = () => {
 
     )
 
-};
+}

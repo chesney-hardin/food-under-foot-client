@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { getUsabilityTypes } from "../../managers/UsabilityTypesManager";
-import { getEdiblePartById, updatePart } from "../../managers/EdiblePartsManager";
-import { getPlantParts } from "../../managers/PlantPartsManager";
+import React, { useEffect, useState } from "react"
+import { useNavigate, useParams } from "react-router-dom"
+import { getUsabilityTypes } from "../../managers/UsabilityTypesManager"
+import { getEdiblePartById, updatePart } from "../../managers/EdiblePartsManager"
+import { getPlantParts } from "../../managers/PlantPartsManager"
 
 export const EditEdiblePart = () => {
-  const { partId } = useParams();
-  const [usabilityTypes, setUsabilityTypes] = useState([]);
-  const [plantParts, setPlantParts] = useState([]);
-  const [fetchedPart, setFetchedPart] = useState({});
+  const { partId } = useParams()
+  const [usabilityTypes, setUsabilityTypes] = useState([])
+  const [plantParts, setPlantParts] = useState([])
+  const [fetchedPart, setFetchedPart] = useState({})
   const [ediblePart, setEdiblePart] = useState({
     wild_plant: 0,
     plant_part: 0,
@@ -16,18 +16,18 @@ export const EditEdiblePart = () => {
     harvest_start: "",
     harvest_end: "",
     image: "",
-  });
-  const navigate = useNavigate();
+  })
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (partId) {
       getEdiblePartById(partId).then((part) => {
-        setFetchedPart(part);
-      });
-      getUsabilityTypes().then((types) => setUsabilityTypes(types));
-      getPlantParts().then((parts) => setPlantParts(parts));
+        setFetchedPart(part)
+      })
+      getUsabilityTypes().then((types) => setUsabilityTypes(types))
+      getPlantParts().then((parts) => setPlantParts(parts))
     }
-  }, [partId]);
+  }, [partId])
 
   useEffect(() => {
     if (fetchedPart.id) {
@@ -39,23 +39,23 @@ export const EditEdiblePart = () => {
         harvest_start: fetchedPart.harvest_start,
         harvest_end: fetchedPart.harvest_end,
         image: fetchedPart.image,
-      });
+      })
     }
-  }, [fetchedPart]);
+  }, [fetchedPart])
 
   const handleSaveButtonClick = (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
     updatePart(partId, ediblePart).then(() => {
-      navigate(`/manage-edible-profile/${ediblePart.wild_plant}`);
-    });
-  };
+      navigate(`/manage-edible-profile/${ediblePart.wild_plant}`)
+    })
+  }
 
   const handleEdit = (event) => {
-    const copy = { ...ediblePart };
-    copy[event.target.name] = event.target.value;
-    setEdiblePart(copy);
-  };
+    const copy = { ...ediblePart }
+    copy[event.target.name] = event.target.value
+    setEdiblePart(copy)
+  }
 
   return (
     <section className="p-4">
@@ -71,9 +71,9 @@ export const EditEdiblePart = () => {
                 autoFocus
                 name="plant_part"
                 onChange={(event) => {
-                  const copy = { ...ediblePart };
-                  copy.plant_part = parseInt(event.target.value);
-                  setEdiblePart(copy);
+                  const copy = { ...ediblePart }
+                  copy.plant_part = parseInt(event.target.value)
+                  setEdiblePart(copy)
                 }}
                 className="mt-1 block min-w-min rounded-md border-gray-300 shadow-sm focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
               >
@@ -96,9 +96,9 @@ export const EditEdiblePart = () => {
                 required
                 name="usability"
                 onChange={(event) => {
-                  const copy = { ...ediblePart };
-                  copy.usability = parseInt(event.target.value);
-                  setEdiblePart(copy);
+                  const copy = { ...ediblePart }
+                  copy.usability = parseInt(event.target.value)
+                  setEdiblePart(copy)
                 }}
                 className="mt-1 block min-w-min rounded-md border-gray-300 shadow-sm focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
               >
@@ -174,9 +174,9 @@ export const EditEdiblePart = () => {
                 name="image"
                 value={ediblePart.image}
                 onChange={(event) => {
-                  const copy = { ...ediblePart };
-                  copy.image = event.target.value;
-                  setEdiblePart(copy);
+                  const copy = { ...ediblePart }
+                  copy.image = event.target.value
+                  setEdiblePart(copy)
                 }}
               />
             </div>
@@ -185,14 +185,14 @@ export const EditEdiblePart = () => {
           <div className="space-x-2 mt-4">
             <button
               onClick={handleSaveButtonClick}
-              className="px-2 py-1 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+              className="btn"
             >
               Save Edible Part
             </button>
             <button
-              className="px-2 py-1 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+              className="btn"
               onClick={() => {
-                navigate(`/manage-edible-profile/${ediblePart.wild_plant}`);
+                navigate(`/manage-edible-profile/${ediblePart.wild_plant}`)
               }}
             >
               Cancel
@@ -201,5 +201,5 @@ export const EditEdiblePart = () => {
         </form>
       </section>
     </section>
-  );
-};
+  )
+}

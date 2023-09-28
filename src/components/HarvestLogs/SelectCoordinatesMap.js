@@ -77,7 +77,7 @@ export const SelectCoordinatesMap = ({ setNewHarvestLog, newHarvestLog }) => {
           </div>
           <button
             onClick={handleSaveCoordinates}
-            className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50 mt-2"
+            className="btn mt-2"
           >
             Save Coordinates
           </button>

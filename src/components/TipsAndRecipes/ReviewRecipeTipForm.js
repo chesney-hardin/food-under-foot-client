@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { getTipsOrRecipesById, updateTipOrRecipe } from "../../managers/TipsAndRecipesManager";
+import React, { useEffect, useState } from "react"
+import { useNavigate, useParams } from "react-router-dom"
+import { getTipsOrRecipesById, updateTipOrRecipe } from "../../managers/TipsAndRecipesManager"
 
 export const ReviewRecipeTipForm = () => {
     const { recipeTipId } = useParams()
-    const [plant, setPlant] = useState({})
     const [showUnapprovedForm, setShowUnapprovedForm] = useState(false)
     const [fetchedRecipeTip, setFetchedRecipeTip] = useState({
         user: 0,
@@ -57,7 +56,7 @@ export const ReviewRecipeTipForm = () => {
         recipeTip.isApproved = true
 
         updateTipOrRecipe(recipeTipId, recipeTip).then(() => {
-            navigate(`/tips-recipes-review/`);
+            navigate(`/tips-recipes-review/`)
         })
     }
 
@@ -67,14 +66,14 @@ export const ReviewRecipeTipForm = () => {
         recipeTip.isApproved = false
 
         updateTipOrRecipe(recipeTipId, recipeTip).then(() => {
-            navigate(`/tips-recipes-review/`);
+            navigate(`/tips-recipes-review/`)
         })
     }
 
 
     return (
         <section className="bg-gray-100 p-4">
-      
+
             <section className="bg-white p-4 rounded-lg shadow-lg">
                 <div className="col-span-1">
                     <article
@@ -82,41 +81,40 @@ export const ReviewRecipeTipForm = () => {
                     >
                         <div className="">
                             <div>
-                            <img
-                            src={fetchedRecipeTip.image}
-                            alt="image associated with recipe/tip"
-                            className="max-h-48 m-4 rounded-lg shadow-lg"
-                            style={{ float: 'right' }} 
-                        />
+                                <img
+                                    src={fetchedRecipeTip.image}
+                                    alt="recipe/tip"
+                                    className="max-h-48 m-4 rounded-lg shadow-lg"
+                                    style={{ float: 'right' }}
+                                />
                                 <h2 className="text-lg font-semibold">Review "{fetchedRecipeTip.title}"</h2>
- 
-                            {fetchedRecipeTip.isRecipe ?
-                                <div className="text-gray-600">
-                                    Recipe for {fetchedRecipeTip.wild_plant?.common_name} {fetchedRecipeTip.plant_part?.label}
-                                </div> :
-                                <div className="text-gray-600">
-                                    Harvest tip for {fetchedRecipeTip.wild_plant?.common_name} {fetchedRecipeTip.plant_part?.label}
-                                </div>
-                            }
 
-                            <div className="text-gray-600">
-                                Posted by {fetchedRecipeTip.user.first_name} {fetchedRecipeTip.user.last_name} on {fetchedRecipeTip.date}
+                                {fetchedRecipeTip.isRecipe ?
+                                    <div className="text-gray-600">
+                                        Recipe for {fetchedRecipeTip.wild_plant?.common_name} {fetchedRecipeTip.plant_part?.label}
+                                    </div> :
+                                    <div className="text-gray-600">
+                                        Harvest tip for {fetchedRecipeTip.wild_plant?.common_name} {fetchedRecipeTip.plant_part?.label}
+                                    </div>
+                                }
+
+                                <div className="text-gray-600">
+                                    Posted by {fetchedRecipeTip.user.first_name} {fetchedRecipeTip.user.last_name} on {fetchedRecipeTip.date}
+                                </div>
+                                <div className="text-gray-600">
+                                    Description: {fetchedRecipeTip.description}
+                                </div>
                             </div>
-                            <div className="text-gray-600">
-                                Description: {fetchedRecipeTip.description}
-                            </div>
-                        </div>
-                      
                         </div>
                     </article>
                     <button
-                        className="px-2 py-1 mr-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+                        className="mr-2 btn"
                         onClick={handleApproval}
                     >
                         Approve
                     </button>
                     <button
-                        className="px-2 py-1 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+                        className="btn"
                         onClick={() => {
                             setShowUnapprovedForm(true)
                         }}
@@ -136,13 +134,13 @@ export const ReviewRecipeTipForm = () => {
                                 name="reasonUnapproved"
                                 value={recipeTip.reasonUnapproved}
                                 onChange={(event) => {
-                                    const copy = { ...recipeTip };
-                                    copy.reasonUnapproved = event.target.value;
+                                    const copy = { ...recipeTip }
+                                    copy.reasonUnapproved = event.target.value
                                     setRecipeTip(copy)
                                 }}
                             />
                             <button
-                                className="px-2 py-1 mt-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+                                className="mt-2 btn"
                                 onClick={handleRejection}
                             >
                                 Submit Review

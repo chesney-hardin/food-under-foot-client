@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { postNewPlant } from "../../managers/WildPlantsManager";
+import React, { useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import { postNewPlant } from "../../managers/WildPlantsManager"
 
 export const AdminNewPlantForm = () => {
   const [newPlant, setNewPlant] = useState({
@@ -11,24 +11,24 @@ export const AdminNewPlantForm = () => {
     description: "",
     image: "",
     link_to_usda: "",
-  });
+  })
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleSaveButtonClick = (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
     postNewPlant(newPlant).then((plantCreated) => {
-      const newPlantId = plantCreated.id;
-      navigate(`/manage-edible-profile/${newPlantId}`);
-    });
-  };
+      const newPlantId = plantCreated.id
+      navigate(`/manage-edible-profile/${newPlantId}`)
+    })
+  }
 
   const handleChange = (event) => {
-    const copy = { ...newPlant };
-    copy[event.target.name] = event.target.value;
-    setNewPlant(copy);
-  };
+    const copy = { ...newPlant }
+    copy[event.target.name] = event.target.value
+    setNewPlant(copy)
+  }
 
   return (
     <section className="bg-gray-100 p-4">
@@ -161,7 +161,7 @@ export const AdminNewPlantForm = () => {
           <div className="mt-4">
             <button
               onClick={handleSaveButtonClick}
-              className="px-4 py-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+              className="btn"
             >
               Create Plant Profile
             </button>
@@ -169,5 +169,5 @@ export const AdminNewPlantForm = () => {
         </form>
       </section>
     </section>
-  );
-};
+  )
+}

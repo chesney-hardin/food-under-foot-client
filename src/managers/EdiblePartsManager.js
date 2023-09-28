@@ -49,3 +49,11 @@ export const updatePart = (partId, part) => {
         body: JSON.stringify(part)
     })
 }
+
+// use to convert month integer into string
+export const convertHarvestMonth = (monthData) => {
+    const monthNumber = parseInt(monthData, 10)
+    const date = new Date(`2023-${monthNumber}-01`)
+    const monthName = date.toLocaleString("default", { month: "long" })
+    return monthName
+}

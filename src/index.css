@@ -34,3 +34,11 @@ code {
   border-radius: 4px;
 }
 
+@layer components {
+  .btn {
+    @apply px-2 py-1; 
+    @apply bg-fuf-teal;
+    @apply rounded-md focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50;
+  }
+}
+

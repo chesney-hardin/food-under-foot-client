@@ -12,7 +12,7 @@ export const HarvestLogSearch = ({ setSearchTerms }) => {
             }
             type="text" placeholder="Search by title" />
 
-        <button className="px-4 py-2 m-2 bg-fuf-teal text-white rounded-md hover:bg-fuf-teal-600 focus:outline-none focus:ring focus:ring-fuf-teal focus:ring-opacity-50"
+        <button className="btn"
             onClick={() => { setSearchTerms(searchTitle) }}>Search</button>
     </>
 }
