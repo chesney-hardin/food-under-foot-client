@@ -1,5 +1,5 @@
 export const getPublicHarvestLogsByPlantId = (plantId) => {
-    return fetch(`http://localhost:8000/harvestlogs?public&plant=${plantId}`, {
+    return fetch(`https://goldfish-app-6ki8h.ondigitalocean.app/harvestlogs?public&plant=${plantId}`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("fuf_token")}`
         }
@@ -7,7 +7,7 @@ export const getPublicHarvestLogsByPlantId = (plantId) => {
 }
 
 export const getPublicHarvestLogsByTitle = (plantId, searchTerm) => {
-    return fetch(`http://localhost:8000/harvestlogs?public&plant=${plantId}&title=${searchTerm}`, {
+    return fetch(`https://goldfish-app-6ki8h.ondigitalocean.app/harvestlogs?public&plant=${plantId}&title=${searchTerm}`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("fuf_token")}`
         }
@@ -15,7 +15,7 @@ export const getPublicHarvestLogsByTitle = (plantId, searchTerm) => {
 }
 
 export const postNewHarvestLog = (newHarvestLog) => {
-    return fetch("http://localhost:8000/harvestlogs", {
+    return fetch("https://goldfish-app-6ki8h.ondigitalocean.app/harvestlogs", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -27,14 +27,14 @@ export const postNewHarvestLog = (newHarvestLog) => {
 }
 
 export const getCurrentUsersHarvestLogs = () => {
-    return fetch(`http://localhost:8000/harvestlogs?user`, {
+    return fetch(`https://goldfish-app-6ki8h.ondigitalocean.app/harvestlogs?user`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("fuf_token")}`
         }
     }).then(res => res.json())
 }
 export const getUsersSearchHarvestLogs = (searchTerm) => {
-    return fetch(`http://localhost:8000/harvestlogs?user&title=${searchTerm}`, {
+    return fetch(`https://goldfish-app-6ki8h.ondigitalocean.app/harvestlogs?user&title=${searchTerm}`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("fuf_token")}`
         }
@@ -42,7 +42,7 @@ export const getUsersSearchHarvestLogs = (searchTerm) => {
 }
 
 export const deleteHarvestLog = (logId) => {
-    return fetch(`http://localhost:8000/harvestlogs/${logId}`, {
+    return fetch(`https://goldfish-app-6ki8h.ondigitalocean.app/harvestlogs/${logId}`, {
         method: "DELETE",
         headers:{
             "Authorization": `Token ${localStorage.getItem("fuf_token")}`
@@ -51,7 +51,7 @@ export const deleteHarvestLog = (logId) => {
   }
 
   export const getHarvestLogById = (logId) => {
-    return fetch(`http://localhost:8000/harvestlogs/${logId}`, {
+    return fetch(`https://goldfish-app-6ki8h.ondigitalocean.app/harvestlogs/${logId}`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("fuf_token")}`
         }
@@ -59,7 +59,7 @@ export const deleteHarvestLog = (logId) => {
 }
 
 export const updateHarvestLog = (logId, log) => {
-    return fetch(`http://localhost:8000/harvestlogs/${logId}`, {
+    return fetch(`https://goldfish-app-6ki8h.ondigitalocean.app/harvestlogs/${logId}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",

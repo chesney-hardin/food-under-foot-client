@@ -1,5 +1,5 @@
 export const getPlantParts = () => {
-    return fetch(`http://localhost:8000/plantparts`, {
+    return fetch(`https://goldfish-app-6ki8h.ondigitalocean.app/plantparts`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("fuf_token")}`
         }
@@ -8,7 +8,7 @@ export const getPlantParts = () => {
 
 
 export const postNewEdiblePart = (newEdiblePart) => {
-    return fetch("http://localhost:8000/edibleparts", {
+    return fetch("https://goldfish-app-6ki8h.ondigitalocean.app/edibleparts", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
