@@ -33,7 +33,7 @@ export const HarvestLogList = ({ harvestLogs, setHarvestLogs, showEditDeleteButt
                         <h3 className="text-xl font-semibold mb-2">{harvestLog.title}</h3>
                         <img
                             src={harvestLog.image}
-                            alt="image of harvest"
+                            alt="harvest"
                             className="max-h-36 rounded-lg shadow-lg"
                         />
                         </div>
