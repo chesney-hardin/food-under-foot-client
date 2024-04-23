@@ -37,7 +37,7 @@ export const HarvestLogForm = () => {
         copy.wild_plant = plantData.id
         setNewHarvestLog(copy)
       })}
-  }, [plantId])
+  }, [plantId, newHarvestLog])
 
   const handleSaveButtonClick = (event) => {
     event.preventDefault();

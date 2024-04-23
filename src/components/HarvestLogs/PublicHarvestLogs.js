@@ -16,14 +16,14 @@ export const PublicHarvestLogs = () => {
     if (plantId) {
       getAllLogs()
     }
-  }, [])
+  }, [plantId])
 
 
   useEffect(() => {
     getPublicHarvestLogsByTitle(plantId, searchTerms).then((searchedLogs) => {
       setHarvestLogs(searchedLogs)
     })
-  }, [searchTerms])
+  }, [searchTerms, plantId])
 
   const getAllLogs = () => {
     getPublicHarvestLogsByPlantId(plantId).then((harvestData) =>
