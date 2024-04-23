@@ -1,5 +1,5 @@
 export const getApprovedTipsByPlantId = (plantId) => {
-    return fetch(`http://localhost:8000/tipsandrecipes?approved&tips&plant=${plantId}`, {
+    return fetch(`https://goldfish-app-6ki8h.ondigitalocean.app/tipsandrecipes?approved&tips&plant=${plantId}`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("fuf_token")}`
         }
@@ -7,7 +7,7 @@ export const getApprovedTipsByPlantId = (plantId) => {
 }
 
 export const getApprovedRecipesByPlantId = (plantId) => {
-    return fetch(`http://localhost:8000/tipsandrecipes?approved&recipes&plant=${plantId}`, {
+    return fetch(`https://goldfish-app-6ki8h.ondigitalocean.app/tipsandrecipes?approved&recipes&plant=${plantId}`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("fuf_token")}`
         }
@@ -15,7 +15,7 @@ export const getApprovedRecipesByPlantId = (plantId) => {
 }
 
 export const postNewTipOrRecipe = (body) => {
-    return fetch("http://localhost:8000/tipsandrecipes", {
+    return fetch("https://goldfish-app-6ki8h.ondigitalocean.app/tipsandrecipes", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -27,7 +27,7 @@ export const postNewTipOrRecipe = (body) => {
 }
 
 export const getCurrentUsersRecipes = () => {
-    return fetch(`http://localhost:8000/tipsandrecipes?recipes&user`, {
+    return fetch(`https://goldfish-app-6ki8h.ondigitalocean.app/tipsandrecipes?recipes&user`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("fuf_token")}`
         }
@@ -35,7 +35,7 @@ export const getCurrentUsersRecipes = () => {
 }
 
 export const getCurrentUsersTips = () => {
-    return fetch(`http://localhost:8000/tipsandrecipes?tips&user`, {
+    return fetch(`https://goldfish-app-6ki8h.ondigitalocean.app/tipsandrecipes?tips&user`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("fuf_token")}`
         }
@@ -43,7 +43,7 @@ export const getCurrentUsersTips = () => {
 }
 
 export const getTipsOrRecipesById = (id) => {
-    return fetch(`http://localhost:8000/tipsandrecipes/${id}`, {
+    return fetch(`https://goldfish-app-6ki8h.ondigitalocean.app/tipsandrecipes/${id}`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("fuf_token")}`
         }
@@ -51,7 +51,7 @@ export const getTipsOrRecipesById = (id) => {
 }
 
 export const updateTipOrRecipe = (id, body) => {
-    return fetch(`http://localhost:8000/tipsandrecipes/${id}`, {
+    return fetch(`https://goldfish-app-6ki8h.ondigitalocean.app/tipsandrecipes/${id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -62,7 +62,7 @@ export const updateTipOrRecipe = (id, body) => {
 }
 
 export const deleteTipOrRecipe  = (id) => {
-    return fetch(`http://localhost:8000/tipsandrecipes/${id}`, {
+    return fetch(`https://goldfish-app-6ki8h.ondigitalocean.app/tipsandrecipes/${id}`, {
         method: "DELETE",
         headers:{
             "Authorization": `Token ${localStorage.getItem("fuf_token")}`
@@ -71,7 +71,7 @@ export const deleteTipOrRecipe  = (id) => {
   }
 
   export const getUnapprovedRecipesForReview = () => {
-    return fetch(`http://localhost:8000/tipsandrecipes?unapproved&recipes&review`, {
+    return fetch(`https://goldfish-app-6ki8h.ondigitalocean.app/tipsandrecipes?unapproved&recipes&review`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("fuf_token")}`
         }
@@ -79,14 +79,14 @@ export const deleteTipOrRecipe  = (id) => {
 }
 
 export const getUnapprovedTipsForReview = () => {
-    return fetch(`http://localhost:8000/tipsandrecipes?unapproved&tips&review`, {
+    return fetch(`https://goldfish-app-6ki8h.ondigitalocean.app/tipsandrecipes?unapproved&tips&review`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("fuf_token")}`
         }
     }).then(res => res.json())
 }
 export const getUnapprovedRecipesAndTipsForReview = () => {
-    return fetch(`http://localhost:8000/tipsandrecipes?unapproved&review`, {
+    return fetch(`https://goldfish-app-6ki8h.ondigitalocean.app/tipsandrecipes?unapproved&review`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("fuf_token")}`
         }

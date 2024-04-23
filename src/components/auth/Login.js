@@ -23,7 +23,7 @@ export const Login = ({ setToken, setStaff }) => {
           navigate("/home");
           setTimeout(() => {
             if (res.staff) {
-              window.alert("Hello admin user");
+              window.alert("Hello admin user. Please remember to review harvest tips and recipes.");
             } else {
               window.alert(
                 "NEW USERS!!!\nIf you're new to foraging wild edibles, please take a moment to review the harvest guidelines and safety tips."

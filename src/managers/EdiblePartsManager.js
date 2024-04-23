@@ -1,5 +1,5 @@
 export const getCurrentEdibles = () => {
-    return fetch("http://localhost:8000/edibleparts?current", {
+    return fetch("https://goldfish-app-6ki8h.ondigitalocean.app/edibleparts?current", {
         headers: {
             "Authorization": `Token ${localStorage.getItem("fuf_token")}`
         }
@@ -7,7 +7,7 @@ export const getCurrentEdibles = () => {
 }
 
 export const getEdiblePartsOfAPlant = (plantId) => {
-    return fetch(`http://localhost:8000/edibleparts?plant=${plantId}`, {
+    return fetch(`https://goldfish-app-6ki8h.ondigitalocean.app/edibleparts?plant=${plantId}`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("fuf_token")}`
         }
@@ -15,7 +15,7 @@ export const getEdiblePartsOfAPlant = (plantId) => {
 }
 
 export const getEdibleParts = () => {
-    return fetch(`http://localhost:8000/edibleparts`, {
+    return fetch(`https://goldfish-app-6ki8h.ondigitalocean.app/edibleparts`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("fuf_token")}`
         }
@@ -23,7 +23,7 @@ export const getEdibleParts = () => {
 }
 
 export const deleteEdiblePart = (edibleId) => {
-    return fetch(`http://localhost:8000/edibleparts/${edibleId}`, {
+    return fetch(`https://goldfish-app-6ki8h.ondigitalocean.app/edibleparts/${edibleId}`, {
         method: "DELETE",
         headers: {
             "Authorization": `Token ${localStorage.getItem("fuf_token")}`
@@ -32,7 +32,7 @@ export const deleteEdiblePart = (edibleId) => {
 }
 
 export const getEdiblePartById = (edibleId) => {
-    return fetch(`http://localhost:8000/edibleparts/${edibleId}`, {
+    return fetch(`https://goldfish-app-6ki8h.ondigitalocean.app/edibleparts/${edibleId}`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("fuf_token")}`
         }
@@ -40,7 +40,7 @@ export const getEdiblePartById = (edibleId) => {
 }
 
 export const updatePart = (partId, part) => {
-    return fetch(`http://localhost:8000/edibleparts/${partId}`, {
+    return fetch(`https://goldfish-app-6ki8h.ondigitalocean.app/edibleparts/${partId}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",

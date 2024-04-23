@@ -18,6 +18,7 @@ export const AdminNav = ({ token, setToken }) => {
     }
 
     const handleLogout = () => {
+        setIsDropdownOpen(false)
         setToken("");
         localStorage.removeItem("staff");
         navigate("/login");

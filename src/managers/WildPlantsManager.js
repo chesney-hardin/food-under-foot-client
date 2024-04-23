@@ -1,5 +1,5 @@
 export const getWildPlants = () => {
-    return fetch("http://localhost:8000/wildplants", {
+    return fetch("https://goldfish-app-6ki8h.ondigitalocean.app/wildplants", {
         headers: {
             "Authorization": `Token ${localStorage.getItem("fuf_token")}`
         }
@@ -7,7 +7,7 @@ export const getWildPlants = () => {
 }
 
 export const getSinglePlant = (plantId) => {
-    return fetch(`http://localhost:8000/wildplants/${plantId}`, {
+    return fetch(`https://goldfish-app-6ki8h.ondigitalocean.app/wildplants/${plantId}`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("fuf_token")}`
         }
@@ -15,7 +15,7 @@ export const getSinglePlant = (plantId) => {
 }
 
 export const postNewPlant = (newPlant) => {
-    return fetch("http://localhost:8000/wildplants", {
+    return fetch("https://goldfish-app-6ki8h.ondigitalocean.app/wildplants", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -27,7 +27,7 @@ export const postNewPlant = (newPlant) => {
 }
 
 export const deleteWildPlant = (plantId) => {
-    return fetch(`http://localhost:8000/wildplants/${plantId}`, {
+    return fetch(`https://goldfish-app-6ki8h.ondigitalocean.app/wildplants/${plantId}`, {
         method: "DELETE",
         headers:{
             "Authorization": `Token ${localStorage.getItem("fuf_token")}`
@@ -36,7 +36,7 @@ export const deleteWildPlant = (plantId) => {
   }
 
 export const updatePlant = (plantId, plant) => {
-    return fetch(`http://localhost:8000/wildplants/${plantId}`, {
+    return fetch(`https://goldfish-app-6ki8h.ondigitalocean.app/wildplants/${plantId}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -48,7 +48,7 @@ export const updatePlant = (plantId, plant) => {
 
 
 export const getPlantsByEdiblePart = (partId) => {
-    return fetch(`http://localhost:8000/wildplants?edible_part=${partId}`, {
+    return fetch(`https://goldfish-app-6ki8h.ondigitalocean.app/wildplants?edible_part=${partId}`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("fuf_token")}`
         }
@@ -56,7 +56,7 @@ export const getPlantsByEdiblePart = (partId) => {
 }
 
 export const getPlantsByCommonName = (searchTerm) => {
-    return fetch(`http://localhost:8000/wildplants?common_name=${searchTerm}`, {
+    return fetch(`https://goldfish-app-6ki8h.ondigitalocean.app/wildplants?common_name=${searchTerm}`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("fuf_token")}`
         }
@@ -64,7 +64,7 @@ export const getPlantsByCommonName = (searchTerm) => {
 }
 
 export const getPlantsByNameAndPart = (searchTerm, partId) => {
-    return fetch(`http://localhost:8000/wildplants?common_name=${searchTerm}&edible_part=${partId}`, {
+    return fetch(`https://goldfish-app-6ki8h.ondigitalocean.app/wildplants?common_name=${searchTerm}&edible_part=${partId}`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("fuf_token")}`
         }
