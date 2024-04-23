@@ -84,7 +84,7 @@ export const ReviewRecipeTipForm = () => {
                             <div>
                             <img
                             src={fetchedRecipeTip.image}
-                            alt="image associate with fetchedRecipeTip"
+                            alt="image associated with recipe/tip"
                             className="max-h-48 m-4 rounded-lg shadow-lg"
                             style={{ float: 'right' }} 
                         />

@@ -1,4 +1,4 @@
-import Logo from "/Users/chesneyhardin/workspace/food-under-foot/food-under-foot-client/src/components/nav/logo-fuf.png"
+import Logo from "../nav/logo-fuf.png"
 import { Link } from "react-router-dom"
 
 export const MainLandingPage = () => {

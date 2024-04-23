@@ -10,7 +10,7 @@ export const AdminNav = ({ token, setToken }) => {
 
     useEffect(() => {
         getUnapprovedRecipesAndTipsForReview().then((posts) => setNeedReview(posts.length))
-    }, [])
+    }, [isDropdownOpen])
 
 
     const toggleDropdown = () => {

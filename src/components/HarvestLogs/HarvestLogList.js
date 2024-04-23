@@ -21,6 +21,15 @@ export const HarvestLogList = ({ harvestLogs, setHarvestLogs, showEditDeleteButt
         }
     }
 
+    const formatDate = (dateString) => {
+        const date = new Date(dateString)
+        return date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+        })
+    }
+
     return (
         <>
             <article className="p-4">
@@ -30,6 +39,7 @@ export const HarvestLogList = ({ harvestLogs, setHarvestLogs, showEditDeleteButt
                         className=" rounded-md p-4 mb-4 flex shadow-lg"
                     >
                         <div className="w-1/3 pr-2">
+
                         <h3 className="text-xl font-semibold mb-2">{harvestLog.title}</h3>
                         <img
                             src={harvestLog.image}
@@ -38,24 +48,27 @@ export const HarvestLogList = ({ harvestLogs, setHarvestLogs, showEditDeleteButt
                         />
                         </div>
                         <div className="w-2/3 pl-2">
-                        <div>
-                            Harvested: {harvestLog.wild_plant.common_name}{" "}
-                            {harvestLog.plant_part.label}
-                        </div>
-                        <div>
-                            Posted by: {harvestLog.user.first_name}{" "}
-                            {harvestLog.user.last_name}
-                        </div>
-                        <div>
-                            Coordinates: {harvestLog.latitude}, {harvestLog.longitude}
-                        </div>
-                        <div>
-                            {harvestLog.isPublicLocation
-                                ? "This is a public location"
-                                : "This is a private location"}
-                        </div>
-                        <div>Quantity: {harvestLog.quantity}</div>
-                        <div>Description: {harvestLog.description}</div>
+                            <div>
+                                Harvested: {harvestLog.wild_plant.common_name}{" "}
+                                {harvestLog.plant_part.label}
+                            </div>
+                            <div>
+                                Date: {formatDate(harvestLog.date)}
+                            </div>
+                            <div>
+                                Posted by: {harvestLog.user.first_name}{" "}
+                                {harvestLog.user.last_name}
+                            </div>
+                            <div>
+                                Coordinates: {harvestLog.latitude}, {harvestLog.longitude}
+                            </div>
+                            <div>
+                                {harvestLog.isPublicLocation
+                                    ? "This is a public location"
+                                    : "This is a private location"}
+                            </div>
+                            <div>Quantity: {harvestLog.quantity}</div>
+                            <div>Description: {harvestLog.description}</div>
                         </div>
                         {showEditDeleteButtons ?
                             <div>
